@@ -1,0 +1,14 @@
+{
+    "name": "cedric/projet",
+    "authors": [
+        {
+            "name": "cedric60",
+            "email": "cedric.desgroux@yahoo.fr"
+        }
+    ],
+    "require": {
+        "silex/silex": "^2.2",
+        "twig/twig": "^2.4",
+        "doctrine/dbal": "^2.6"
+    }
+}
