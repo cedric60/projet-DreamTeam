@@ -14,18 +14,20 @@
         'password' =>'',  
     );
 
+    $app->registe(new Silex\Provider\DoctrineServiceProvider());
+
     // Register service providers
     $app->register(new Silex\Provider\TwigServiceProvider());
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
-        'twig.path'=>__DIR__.'/../templates',
+        'twig.path'=>__DIR__.'/../View',
         'twig.options'=>array('debug'=>true)
         ));
     
     //composer require dongww/silex-debugbar
-    $app->register(new Dongww\Silex\Provider\DebugBarServiceProvider());
+    //$app->register(new Dongww\Silex\Provider\DebugBarServiceProvider());
     
     // Register services
-    $app['dao.index'] = function ($app) {
-        return new \App\DAO\IndexDAO($app['db']);
+    $app['dao.admin'] = function ($app) {
+        return new \App\DAO\AdminDAO($app['db']);
     };
