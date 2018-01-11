@@ -6,9 +6,8 @@ class FormationDAO {
 
     public function find($id) {
         $sql = 'SELECT * FROM formation '
-                . 'WHERE formation_id = ' . $id;
-        $stmt = bdd::getConn()->prepare($sql);
-        $stmt->execute();
+                . 'WHERE formation_id = ?';
+        $stmt = $this->getDb()->fetchAssoc($sql, array($id));
 
         return $stmt;
     }
