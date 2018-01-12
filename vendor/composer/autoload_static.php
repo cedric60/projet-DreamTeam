@@ -21,11 +21,15 @@ class ComposerStaticInitf844ef1d4002e512bdd89ac54ee9307c
         array (
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Security\\' => 27,
             'Symfony\\Component\\Routing\\' => 26,
+            'Symfony\\Component\\PropertyAccess\\' => 33,
+            'Symfony\\Component\\Inflector\\' => 28,
             'Symfony\\Component\\HttpKernel\\' => 29,
             'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Debug\\' => 24,
+            'Symfony\\Bridge\\Twig\\' => 20,
             'Silex\\' => 6,
         ),
         'P' => 
@@ -55,9 +59,21 @@ class ComposerStaticInitf844ef1d4002e512bdd89ac54ee9307c
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Component\\Security\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/security',
+        ),
         'Symfony\\Component\\Routing\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
+        ),
+        'Symfony\\Component\\PropertyAccess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-access',
+        ),
+        'Symfony\\Component\\Inflector\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/inflector',
         ),
         'Symfony\\Component\\HttpKernel\\' => 
         array (
@@ -74,6 +90,10 @@ class ComposerStaticInitf844ef1d4002e512bdd89ac54ee9307c
         'Symfony\\Component\\Debug\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/debug',
+        ),
+        'Symfony\\Bridge\\Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/twig-bridge',
         ),
         'Silex\\' => 
         array (
