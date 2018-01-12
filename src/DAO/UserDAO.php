@@ -87,12 +87,18 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
         $user = new User();
         $user->setId($row['user_id']);
         $user->setUsername($row['user_name']);
+<<<<<<< HEAD:src/DAO/UserDAO.php
+=======
 
+>>>>>>> 86c02fa4e195ae298bea4bd7f065c214670dfb8b:src/DAO/UserDAO.php
         $user->setPassword($row['user_password']);
         $user->setSalt($row['user_salt']);
         $user->setRole($row['user_role']);
         return $user;
         */
+<<<<<<< HEAD:src/DAO/UserDAO.php
+=======
 
+>>>>>>> 86c02fa4e195ae298bea4bd7f065c214670dfb8b:src/DAO/UserDAO.php
     }
 }
