@@ -11,3 +11,8 @@ $app->get('/form',"App\Controller\FormController::formAction")
         ->bind('formContact');
 
         $app->get('/listeFormation',"App\Controller\ListeController::ListeFormationAction")
+        ->bind('listeFormation');
+
+// Login page
+$app->get('/login',"App\Controller\UserController::LoginAction")
+        ->bind('Login');

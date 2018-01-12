@@ -10,5 +10,8 @@ class FormController {
 
     }
 
-    
+    public function formValidate(){
+        
+        return $app['twig']->render('index.twig');
+    }
 }
