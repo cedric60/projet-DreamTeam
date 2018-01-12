@@ -14,7 +14,6 @@
         'user' => 'root',
         'password' =>'',  
     );
-
     $app->register(new Silex\Provider\SessionServiceProvider());
 
     $app->register(new Silex\Provider\SecurityServiceProvider(), array(
@@ -47,4 +46,7 @@
     // Register services
     $app['dao.admin'] = function ($app) {
         return new \App\DAO\AdminDAO($app['db']);
+    };
+    $app['dao.user'] = function ($app){
+        return new \App\DAO\UserDAO($app['db']);
     };
