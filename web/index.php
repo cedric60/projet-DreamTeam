@@ -4,8 +4,8 @@
 
     $app = new Silex\Application();
 
-    //require __DIR__.'/../app/app.php';
-    //require __DIR__.'/../app/routes.php';
+    require __DIR__.'/../app/app.php';
+    require __DIR__.'/../app/routes.php';
     /*
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path'=>__DIR__.'/../templates','twig.options'=>array('debug'=>true)));
 
@@ -17,6 +17,5 @@
     });
     */
     
-    // $app->run();
-    
-    echo 'Bonjour';
+    $app->run();
+ 
