@@ -16,8 +16,11 @@
     );
     $app->register(new Silex\Provider\SessionServiceProvider());
 
+<<<<<<< HEAD
     $app->register(new Silex\Provider\SessionServiceProvider());
 
+=======
+>>>>>>> 86c02fa4e195ae298bea4bd7f065c214670dfb8b
     $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         'security.firewalls' => array(
             'secured' => array(
