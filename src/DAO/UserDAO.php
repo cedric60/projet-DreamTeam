@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use App\Model\User;
 
-class AdminDAO extends DAO // heritage la class herite de DAO(elle herite de la connexion a la base de donnee
+class UserDAO extends DAO implements UserProviderInterface// heritage la class herite de DAO(elle herite de la connexion a la base de donnee
 
 {
     /**
@@ -20,9 +20,9 @@ class AdminDAO extends DAO // heritage la class herite de DAO(elle herite de la 
      */
     public function find($id)
     {
-        $sql = 'SELECT admin_id, admin_name, admin_password, admin_salt, admin_role '
-            . 'FROM admin '
-            . 'WHERE admin_id = ?';
+        $sql = 'SELECT user_id, user_name, user_password, user_salt, user_role '
+            . 'FROM user '
+            . 'WHERE user_id = ?';
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row) {
@@ -37,9 +37,9 @@ class AdminDAO extends DAO // heritage la class herite de DAO(elle herite de la 
      */
     public function loadUserByUsername($username)
     {
-        $sql = 'SELECT admin_id, admin_name, admin_password, admin_salt, admin_role '
-            . 'FROM admin '
-            . 'WHERE admin_name = ?';
+        $sql = 'SELECT user_id, user_name, user_password, user_salt, user_role '
+            . 'FROM user '
+            . 'WHERE user_name = ?';
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if ($row) {
@@ -77,12 +77,14 @@ class AdminDAO extends DAO // heritage la class herite de DAO(elle herite de la 
      */
     protected function buildDomainObject(array $row)
     {
-        $user = new Admin();
-        $user->setId($row['admin_id']);
-        $user->setUsername($row['admin_name']);
-        $user->setPassword($row['admin_password']);
-        $user->setSalt($row['admin_salt']);
-        $user->setRole($row['admin_role']);
+        /*
+        $user = new User();
+        $user->setId($row['user_id']);
+        $user->setUsername($row['user_name']);
+        $user->setPassword($row['user_password']);
+        $user->setSalt($row['user_salt']);
+        $user->setRole($row['user_role']);
         return $user;
+        */
     }
 }

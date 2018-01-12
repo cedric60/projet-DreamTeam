@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Cédric
  */
-class Admin  implements  UserInterface {
+class User  implements  UserInterface {
     private $salt;
     private $role;
     private $lastname;
