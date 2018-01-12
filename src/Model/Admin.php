@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Model;
+
+use Symfony\Component\Security\Core\User\UserInterface;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +14,26 @@
  *
  * @author Cédric
  */
-class Admin {
+class Admin  implements  UserInterface {
+    private $salt;
+    private $role;
     private $lastname;
     private $firstname;
     private $mail;
     private $phoneNumber;
+
+    function getSalt() {
+        return $this->salt;
+    }
+
+    function getRoles() {
+        return array($this->getRole());
+    }
     
+    public function eraseCredentials()
+    {
+        //rien
+    } 
     function getLastname() {
         return $this->lastname;
     }

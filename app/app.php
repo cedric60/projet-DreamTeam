@@ -4,7 +4,7 @@
 
     $app['debug'] = true;
 
-    $app['db.options'] = array(
+    $app['db.options'] = array(//connexion a la base de donnee
         'drivers' => 'pdo_mysql',
         'charset' => 'utf8',
         'host' => 'localhost',
@@ -14,7 +14,7 @@
         'password' =>'',  
     );
 
-    $app->registe(new Silex\Provider\DoctrineServiceProvider());
+    $app->registe(new Silex\Provider\DoctrineServiceProvider()); //creation du service
 
     // Register service providers
     $app->register(new Silex\Provider\TwigServiceProvider());
