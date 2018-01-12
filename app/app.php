@@ -16,18 +16,20 @@
     );
     $app->register(new Silex\Provider\SessionServiceProvider());
 
+    $app->register(new Silex\Provider\SessionServiceProvider());
+
     $app->register(new Silex\Provider\SecurityServiceProvider(), array(
-    'security.firewalls' => array(
-        'secured' => array(
-            'pattern' => '^/',
-            'anonymous' => true,
-            'logout' => true,
-            'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
-            'users' => function() use ($app) {
-                return new UserDAO($app['db']);
-            },
+        'security.firewalls' => array(
+            'secured' => array(
+                'pattern' => '^/',
+                'anonymous' => true,
+                'logout' => true,
+                'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+                'users' => function() use ($app) {
+                    return new UserDAO($app['db']);
+                },
+            ),
         ),
-    ),
     ));
 
     $app->register(new Silex\Provider\DoctrineServiceProvider()); //creation du service
