@@ -5,10 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/AnswerDAO.php</file>
             <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/FormationDAO.php</file>
-            <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/AdminDAO.php</file>
             <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/LearnerDAO.php</file>
             <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/QuestionDAO.php</file>
-            <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/Bdd.php</file>
             <file>file:/C:/xampp/htdocs/webforce3/projet/src/DAO/SessionDAO.php</file>
         </group>
     </open-files>
