@@ -50,3 +50,9 @@
     $app['dao.user'] = function ($app){
         return new \App\DAO\UserDAO($app['db']);
     };
+    $app['dao.index'] = function ($app) {
+        return new \App\DAO\IndexDAO($app['db']);
+    };
+    $app['dao.givenanswer'] = function($app) {
+        return new \App\DAO\GivenAnswerDAO($app['db']);
+    };
