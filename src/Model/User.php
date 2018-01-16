@@ -22,7 +22,7 @@ class User  implements  UserInterface {
     private $mail;
     private $phoneNumber;
 
-    function getSalt() {
+    function getSalt() {//get permet de choisir de quelle maniereon souhaite récuperer l'information
         return $this->salt;
     }
 
@@ -50,7 +50,7 @@ class User  implements  UserInterface {
         return $this->phoneNumber;
     }
 
-    function setLastname($lastname) {
+    function setLastname($lastname) {//set permet de faire des vérification sur l'element
         $this->lastname = $lastname;
     }
 

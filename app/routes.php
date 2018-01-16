@@ -17,6 +17,14 @@ $app->get('/listeFormation',"App\Controller\ListeController::ListeFormationActio
 $app->get('/login',"App\Controller\UserController::LoginAction")
         ->bind('Login');
 
+
+// Register page
+$app->get('/register',"App\Controller\UserController::RegisterAction")
+        ->bind('register');
+
+// Forgot password
+$app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")
+        ->bind('forgot_password');
 $app->get('/dataCharts1',"App\Controller\ChartController::DrawChartAction")
         ->bind('dataCharts1');
 
