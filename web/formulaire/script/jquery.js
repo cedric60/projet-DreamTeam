@@ -1,8 +1,23 @@
-	//message qui disparait au click dans le formulaire
+// EN CHANTIER !!!!!!!!!!!!!!!!!!!!!!!
 
-	$("#textarea").focus(function (e){
-			e.preventDefault();
-			if($("#textarea").val() == "Pouvez-vous nous en dire plus?"){
-			$("#textarea").empty();
-			}
-	})
+
+//cliquer sur les smileys pour sélectionner
+$(".image").on("click", function() {
+     $(this).attr("checked",true);
+     alert("ça marche");
+});
+
+ 
+
+
+//faire disparaître le formulaire
+/*
+$(document).ready(function(){
+    $("#form-horizontal").click(function(){
+        $(this).hide();
+    });
+});
+*/
+
+
+//cookie??
