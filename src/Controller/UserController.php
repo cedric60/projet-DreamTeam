@@ -21,6 +21,6 @@ class UserController {
 
     public function SaveregisterAction(Application $app) {
        $regist = $app['dao.user']->RegisterAdmin();
-        return 
+        return $app['twig']->render('login.twig');
     }
 }

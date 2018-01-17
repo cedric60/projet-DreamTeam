@@ -38,18 +38,18 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
      * {@inheritDoc}
      */
 
-    public function loadUserByUsername($username)
+    public function loadUserByUsername($usermail)
     {
         $sql = 'SELECT iduser,name, password, salt, role, mail, phonenumber '
-            . 'FROM learner '
-            . 'WHERE name = ?';
-        $row = $this->getDb()->fetchAssoc($sql, array($username));
+            . 'FROM user '
+            . 'WHERE mail = ?';
+        $row = $this->getDb()->fetchAssoc($sql, array($usermail));
 
         if ($row) {
             return $this->buildDomainObject($row);
         } else {
 
-            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $usermail));
 
         }
     }
@@ -64,7 +64,7 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
         if (!$this->supportsClass($class)) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', $class));
         }
-        return $this->loadUserByUsername($user->getUsername());
+        return $this->loadUserByUsername($user->getMail());
     }
 
     /**
@@ -125,4 +125,4 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
 
 
    
-            }}
+            }}}
