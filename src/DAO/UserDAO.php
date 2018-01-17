@@ -122,7 +122,7 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
     return;
 }
 
-
+    }}}
 
    
-            }}
+         
