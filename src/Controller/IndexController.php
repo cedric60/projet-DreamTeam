@@ -13,8 +13,7 @@
          */
         public function indexAction(Application $app){
             
-            $x = $app['dao.index']->findAll();
-            return $app['twig']->render('index.twig',['x'=>$x]);
+            return $app['twig']->render('index.twig');
         }
     }
     

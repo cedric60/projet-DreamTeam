@@ -1,8 +1,8 @@
 <?php
 
-require 'src/DAO/Bdd.php';
+namespace App\DAO;
 
-class AnswerDAO {
+class AnswerDAO extends DAO {
 
     public function find($id) {
         $sql = 'SELECT * FROM answer '
