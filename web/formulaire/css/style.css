@@ -1,24 +1,19 @@
-header{
-    position: fixed; 	 
+header{	 
     width: 100vw;
     height: 14vh;
     z-index: 1000;
 }
 
-
 body {
 	font-family: 'Helvetica', sans-serif;
     }
 
-
 fieldset {
-    min-width: 0;
-    padding: 0;
-    margin-top: 8%;
-    border: 0;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.logo{  /*à redimensionner en responsive*/
+.logo{  
 	color: #FFF;
     margin-top: -5%;
 }
@@ -29,72 +24,19 @@ fieldset {
     margin-left: 80%;
 }
 
-.picto_mobile {
-    width: 15%;
-    margin-top: -25%;
-    margin-left: 77%;
-}
-
-.form-horizontal{
-
-    padding-top: 10%;
-    margin-left: 20%;
-    margin-right: 20%;
-}
-
-.form-horizontal {
-    padding-top: 17%;
-    margin-left: 0%;
-    margin-right: 0%;
-}
-
 .form-group {
-    margin-bottom: 0rem;
+     margin-bottom: 0; 
 }
 
-fieldset {
-    min-width: 0;
-    padding: 0;
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 0;
-}
-
-#texte{
-    text-align: center;
-    color:#ED7B33;
-    font-size: 14px;
-}
-
-#question{
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#selectbasic{
-    margin-bottom: 5%;
+.happy,.middle,.unhappy{
+    margin-left: 82%;   
 }
 
 .radio-inline {
     border-style: none;
     width: 15%;
     MARGIN: 5% 5% 0% 5%;
-}
-
-#textarea{
-    height:18em
-    ;
-}
-
-
-#textarea_mobile{
-    height:8em
-    ;
-}
-.radio-inline_mobile{
-    border-style: none;
-    width: 22%;
-    MARGIN: 5% 5% 0% 5%;
+    text-align:center;
 }
 
 .button{
@@ -109,24 +51,43 @@ fieldset {
 }
 
 .fb {
-    width: 21%;
-    margin-bottom: 2%;
-    margin-top: 8%;
-    margin-left: 40%;
+    width: 4%;
+    margin-top: 3%;
+    margin-left: 48%;
 }
 
 .fb_mobile {
-    width: 45%;
-    margin-bottom: 3%;
-    margin-top: 5%;
-    margin-left: 28%;
+    width: 11%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+    margin-left: 45%;
 }
 
 .fb_txt{
     color: #2b406d;
-    font-size: 12px;
+    font-size: 15px;
     text-align: center;
+    margin-bottom: 0;
 }
+
+#texte{
+    text-align: center;
+    color:#ED7B33;
+    font-size: 15px;
+}
+
+#question{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#selectbasic{
+    margin-bottom: 3%;
+}
+
+
+
+
 
 
 
