@@ -20,7 +20,9 @@ $app->get('/login',"App\Controller\UserController::LoginAction")
 
 // Register page
 $app->get('/register',"App\Controller\UserController::RegisterAction")
-        ->bind('register');
+        ->bind('register');//Route vers la page register  
+$app->get('/saveregister',"App\Controller\UserController::SaveregisterAction")
+        ->bind('saveregister');//Route vers user controller qui nous renvoie vers la function utiliser pour faire un register
 
 // Forgot password
 $app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")
