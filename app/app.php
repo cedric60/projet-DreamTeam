@@ -56,3 +56,6 @@
     $app['dao.givenanswer'] = function($app) {
         return new \App\DAO\GivenAnswerDAO($app['db']);
     };
+    $app['dao.learner'] = function($app) {
+        return new \App\DAO\LearnerDAO($app['db']);
+    };
