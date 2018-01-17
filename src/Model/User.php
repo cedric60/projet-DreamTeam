@@ -22,7 +22,7 @@ class User  implements  UserInterface {
     private $mail;
     private $phoneNumber;
 
-    function getSalt() {//get permet de choisir de quelle maniereon souhaite récuperer l'information
+    function getSalt() {//get permet de choisir de quelle maniere on souhaite récuperer l'information
         return $this->salt;
     }
 

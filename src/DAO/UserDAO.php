@@ -22,9 +22,9 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
      */
     public function find($id)
     {
-        $sql = 'SELECT user_id, user_name, user_password, user_salt, user_role '
+        $sql = 'SELECT iduser,name, password, salt, role, mail, phonenumber '
             . 'FROM user '
-            . 'WHERE user_id = ?';
+            . 'WHERE iduser = ?';
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row) {
@@ -40,9 +40,9 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
 
     public function loadUserByUsername($username)
     {
-        $sql = 'SELECT user_id, user_name, user_password, user_salt, user_role '
-            . 'FROM user '
-            . 'WHERE user_name = ?';
+        $sql = 'SELECT iduser,name, password, salt, role, mail, phonenumber '
+            . 'FROM learner '
+            . 'WHERE name = ?';
         $row = $this->getDb()->fetchAssoc($sql, array($username));
 
         if ($row) {
@@ -93,4 +93,36 @@ class UserDAO extends DAO implements UserProviderInterface// heritage la class h
         return $user;
         */
     }
+    public function RegisterAdmin(Request $request) {
+       
+
+    //vérification de l'existence de l'email dans la base de donée
+    // requete pour demander si l'addresse mail entrer existe deja en BDD
+    $sql = 'SELECT mail'
+    .'FROM user' 
+    .'WHERE mail = ?';
+    $row = $this->getDb()->fetchAssoc($sql, array($request));// resultat obtenu par la requete ici sous forme de tableau
+
+
+    if($row==true){// Si le resultat demander est true donc l'addresse email existe en BDD on affiche un message erreur
+        echo "Cet addresse email existe deja";
+    }
+    else{ // Sinon si resultat est false l'email saisie n'existe pas en BDD on execute l'insertion
+    
+        // Préparer la requête
+    $q = $app['db']->prepare('INSERT INTO user VALUES (\'' .$_POST['name']. '\', md5(\'' .$_POST['password']. '\'),\'' .$_POST['mail']. '\',\'' .$_POST['phonenumber']. '\')');
+    try {
+    // Envoyer la requête
+    $rows = $q->execute(array());
+    } catch (Doctrine\DBAL\DBALException $e) {
+    // En cas d'erreur, afficher les informations dans le browser
+    // et terminer (Beurk ! Pour debug uniquement)
+    print_r( $q->errorInfo() );
+    print_r( $q->errorCode() );
+    return;
 }
+
+
+
+   
+            }}
