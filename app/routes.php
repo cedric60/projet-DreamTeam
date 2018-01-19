@@ -12,8 +12,6 @@ $app->get('/formContact',"App\Controller\FormController::formContactAction")
 
 
 
-
-
  ////////////////////USER CONTROLLER ////////////////////////////
 
 // Login page
@@ -74,5 +72,13 @@ $app->get('/addlearners',"App\Controller\LearnerController::AddLearnerAction")
 // data pour recuperer les sessions d'une formation
 $app->get('/datasessionstart',"App\Controller\LearnerController::dataSessionStartAction")
         ->bind('dataSessionStart');
+
 $app->get('/datasessionend/{id}',"App\Controller\LearnerController::dataSessionEndAction")
         ->bind('dataSessionEnd');
+
+// Form validation
+$app->post('/form_validation',"App\Controller\FormValidationController::formValidationAction")
+        ->bind('form_validation');
+
+$app->post('/SaveFormAction',"App\Controller\FormValidationController::SaveFormAction")
+        ->bind('SaveFormAction'); //Route vers la fonction de verification du formulaire à faire et modifier regarder userdao

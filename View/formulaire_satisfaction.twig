@@ -32,16 +32,18 @@
             </div>
         </header>
 
-
+    
     <div class="container">
-        <form class="form-horizontal">
+        {% block formulaire %}
+        <form class="form-horizontal" action="{{ path("form_validation") }}" method="post">
             <fieldset>
                 <div class="formgroup ">
                     <label class=" control-label" for="selectbasic"></label>
                     <div class="">
                         <select id="selectbasic" name="selectbasic" class="form-control">
-                              <option value="1">Choisir votre formation...</option>
-                              <option value="2">Comptabilité</option>
+                              {% for formation in formationList %}
+                              <option value={{ formation.idformation }}> {{ formation.name }}</option>
+                              {% endfor %}                    
                         </select>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
                 <div class="form-group">
                     <label class="control-label" for=""></label>
                     <div style="text-align: center">
-                        <button id="button" name="button" class="button" type="button">Envoyer</button>
+                        <button id="button" name="button" class="button" type="submit">Envoyer</button>
                     </div>
                 </div>
 
@@ -100,10 +102,11 @@
                     </div>
                 </div>
             </fieldset>
-        </form>
+        </form> 
+        {% endblock %}
     </div>
-     <script src="script/jquery-3.2.1.min.js"></script>
-     <script src="script/jquery.js"></script>
+     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="/js/formulaire_satisfaction.js"></script>
 </body>
 
 </html>
