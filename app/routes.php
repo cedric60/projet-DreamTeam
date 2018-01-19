@@ -2,7 +2,7 @@
 
 // Home page
 $app->get('/',"App\Controller\IndexController::indexAction")
-        ->bind('index');
+        ->bind('index');//Route vers la page d'accueil
 
 $app->get('/form',"App\Controller\FormController::formAction")
         ->bind('form');
@@ -10,14 +10,21 @@ $app->get('/form',"App\Controller\FormController::formAction")
 $app->get('/formContact',"App\Controller\FormController::formContactAction")
         ->bind('formContact');
 
+
+
+
+
+ ////////////////////USER CONTROLLER ////////////////////////////
+
 // Login page
 $app->get('/login',"App\Controller\UserController::LoginAction")
-        ->bind('Login');
-
+        ->bind('Login');//Route vers la page de connexion
 
 // Register page
-$app->get('/register',"App\Controller\UserController::RegisterAction")
-        ->bind('register');
+$app->post('/register',"App\Controller\UserController::RegisterAction")
+        ->bind('register');//Route vers la page d'enregistrement d'un nouvelle administrateur 
+$app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
+        ->bind('saveregister');//Route vers la fonction de verification du formulaire
 
         
 // Forgot password
@@ -28,6 +35,18 @@ $app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordActio
 // Charts pages
 $app->get('/charts',"App\Controller\ChartController::ChartAction")
         ->bind('charts');
+        
+
+// Reset password
+$app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction")
+        ->bind('reset_password');//Route vers la page de reinitialisation du mot de passe
+
+
+////////////////////// CHART CONTROLLER////////////////////////////////
+// Charts page
+$app->get('/charts',"App\Controller\ChartController::ChartAction")
+        ->bind('charts');
+
 // données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
 $app->get('/dataCharts1',"App\Controller\ChartController::DrawChartAction")
         ->bind('dataCharts1');
@@ -36,12 +55,14 @@ $app->get('/dataCharts',"App\Controller\ChartController::columnChartAction")
         ->bind('dataCharts');
 
 
+////////////////////// FORMATION CONTROLLER///////////////////////////////
 // Formation page
 $app->get('/formation',"App\Controller\FormationController::FormationAction")
         ->bind('formation');
 $app->get('/addformation',"App\Controller\FormationController::AddFormationAction")
         ->bind('addformation');
-
+$app->get('/listeFormation',"App\Controller\ListeController::ListeFormationAction")
+        ->bind('listeFormation');
 
 
 

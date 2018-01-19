@@ -1,0 +1,100 @@
+header{	 
+    width: 100vw;
+    height: 14vh;
+    z-index: 1000;
+}
+
+body {
+	font-family: 'Helvetica', sans-serif;
+    }
+
+fieldset {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.logo{  
+	color: #FFF;
+    margin-top: -5%;
+}
+
+.picto {
+    width: 8%;
+    margin-top: -7%;
+    margin-left: 80%;
+}
+
+.form-group { /*empêche le scroll*/
+     margin-bottom: 0; 
+}
+
+.smiley{
+    margin-left: 82%;   
+}
+
+.radio-inline {
+    border-style: none;
+    width: 15%;
+    MARGIN: 5% 5% 0% 5%;
+    text-align:center;
+}
+
+.button{
+        background-color: #ED7B33;
+        border-radius: 10%;
+        font-size: 16px;
+        color: white;
+}
+
+.fb {
+    width: 4%;
+    margin-top: 3%;
+    margin-left: 48%;
+}
+
+.fb_mobile {
+    width: 11%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+    margin-left: 45%;
+}
+
+.fb_txt{
+    color: #2b406d;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#texte{
+    text-align: center;
+    color:#ED7B33;
+    font-size: 15px;
+}
+
+#question{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#selectbasic{
+    margin-bottom: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

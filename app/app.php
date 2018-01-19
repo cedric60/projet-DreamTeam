@@ -1,39 +1,45 @@
 <?php
 
-    use Silex\Provider\TwigServiceProvider;
-    use App\DAO\UserDAO;
+use Silex\Provider\TwigServiceProvider;
+use App\DAO\UserDAO;
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 
-    $app['debug'] = true;
+$app['debug'] = true;
 
-    $app['db.options'] = array(//connexion a la base de donnee
-        'drivers' => 'pdo_mysql',
-        'charset' => 'utf8',
-        'host' => 'localhost',
-        'port' => '3306',
-        'dbname' =>'projet_idc_conseil',
-        'user' => 'root',
-        'password' =>'',  
-    );
-    $app->register(new Silex\Provider\SessionServiceProvider());
+$app['db.options'] = array(//connexion a la base de donnee
+    'drivers'  => 'pdo_mysql',
+    'charset'  => 'utf8',
+    'host'     => 'localhost',
+    'port'     => '3306',
+    'dbname'   => 'projet_idc_conseil',
+    'user'     => 'root',
+    'password' => '',
+);
+$app->register(new Silex\Provider\SessionServiceProvider());
 
-    $app->register(new Silex\Provider\SecurityServiceProvider(), array(
-        'security.firewalls' => array(
-            'secured' => array(
-                'pattern' => '^/',
-                'anonymous' => true,
-                'logout' => true,
-                'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
-                'users' => function() use ($app) {
-                    return new UserDAO($app['db']);
-                },
-            ),
+$app->register(new Silex\Provider\SecurityServiceProvider(), array(
+    'security.firewalls' => array(
+        'secured' => array(
+            'pattern'   => '^/',
+            'anonymous' => true,
+            'logout'    => true,
+            'form'      => array('login_path' => '/login', 'check_path' => '/login_check'),
+            'users'     => function() use ($app) {
+                return new UserDAO($app['db']);
+            },
         ),
-    ));
+    ),
+));
 
-    $app->register(new Silex\Provider\DoctrineServiceProvider()); //creation du service
+$app->register(new Silex\Provider\DoctrineServiceProvider()); //creation du service
+// Register service providers
+$app->register(new Silex\Provider\TwigServiceProvider());
 
-    // Register service providers
-    $app->register(new Silex\Provider\TwigServiceProvider());
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path'    => __DIR__ . '/../View',
+    'twig.options' => array('debug' => true)
+));
+
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path'=>__DIR__.'/../View',
@@ -62,3 +68,5 @@
     $app['dao.formation'] = function($app) {
         return new \App\DAO\FormationDAO($app['db']);
     };
+
+

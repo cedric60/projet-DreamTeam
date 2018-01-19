@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,57 +15,119 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Cédric
  */
-class User  implements  UserInterface {
+class User implements UserInterface
+{
+
+    private $idUser;
     private $salt;
     private $role;
-    private $lastname;
-    private $firstname;
+    private $name;
+    private $password;
     private $mail;
     private $phoneNumber;
 
-    function getSalt() {//get permet de choisir de quelle maniereon souhaite récuperer l'information
+    function getIduser()
+    {//get permet de choisir de quelle maniere on souhaite récuperer l'information
+        return $this->idUser;
+    }
+
+    function setIduser($idUser)
+    {
+        $this->salt = $idUser;
+
+        return $this;
+    }
+
+    function getSalt()
+    {//get permet de choisir de quelle maniere on souhaite récuperer l'information
         return $this->salt;
     }
 
-    function getRoles() {
+    function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    function getRoles()
+    {
         return array($this->getRole());
     }
-    
-    public function eraseCredentials()
+
+    function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    function eraseCredentials()
     {
         //rien
-    } 
-    function getLastname() {
-        return $this->lastname;
     }
 
-    function getFirstname() {
-        return $this->firstname;
+    function getName()
+    {
+        return $this->name;
     }
 
-    function getMail() {
+    public function setName($name)
+    {//set permet de faire des vérification sur l'element
+        $this->name = $name;
+
+        return $this;
+    }
+
+    function getPassword()
+    {
+        return $this->password;
+    }
+
+    function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    function getMail()
+    {
         return $this->mail;
     }
 
-    function getPhoneNumber() {
-        return $this->phoneNumber;
-    }
-
-    function setLastname($lastname) {//set permet de faire des vérification sur l'element
-        $this->lastname = $lastname;
-    }
-
-    function setFirstname($firstname) {
-        $this->firstname = $firstname;
-    }
-
-    function setMail($mail) {
+    function setMail($mail)
+    {
         $this->mail = $mail;
+
+        return $this;
     }
 
-    function setPhoneNumber($phoneNumber) {
+    function getPhoneNumber()
+    {
+        return $this->phonenumber;
+    }
+
+    function setPhoneNumber($phoneNumber)
+    {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
     }
 
+    public function getUsername()
+    {
+        return $this->name;
+    }
 
+    function getRole()
+    {
+        return $this->role;
+    }
+
+    function setRole($role)
+    {
+        $this->role = $role;
+        return $this;
+    }
 }

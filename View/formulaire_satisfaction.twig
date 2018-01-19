@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>formulaire</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+        <header>
+            <div class="d-none d-md-block d-lg-block d-xl-block"> <!--version desktop-->
+                <img class="header" src="img/header.png" alt="header" style="width:100%">
+                <img class="picto" src="img/picto.png" alt="picto_mail">
+            </div>
+            <div class="d-block d-xs-none d-none d-sm-block d-md-none"> <!--version mobile-->
+                <img class="header" src="img/header_mobile.png" alt="header" width="100%">
+            </div>
+        </header>
+
+
+    <div class="container">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="formgroup ">
+                    <label class=" control-label" for="selectbasic"></label>
+                    <div class="">
+                        <select id="selectbasic" name="selectbasic" class="form-control">
+                              <option value="1">Choisir votre formation...</option>
+                              <option value="2">Comptabilité</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div id="texte">
+                        <p id="question">Etes-vous satisfait de votre formation? </p>
+                        <p id="enonce">(Sélectionnez le smiley puis développez)</p>
+                    </div>
+
+                    <!-- Smileys -->
+                    <div class="container">
+                        <label class="radio-inline" for="radios-0">
+                            <bouton name="action" id="radios-0" value="1" ><img class="img img-fluid smiley" id="happy" src="img/happy.png"  alt="happy"/></bouton>
+                        </label>
+
+                        <label class="radio-inline" for="radios-1">
+                            <bouton name="action" id="radios-1" value="2" ><img class="img img-fluid smiley" id="middle" src="img/middle.png" alt="middle"/></bouton>
+                        </label>
+
+                        <label class="radio-inline " for="radios-2">
+                            <bouton name="action" id="radios-2" value="3" ><img class="img img-fluid smiley" id="unhappy" src="img/unhappy.png" alt="unhappy"/></bouton>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class=" control-label" for="textarea"></label>
+                    <div class="">
+                        <textarea class="form-control" rows="10" id="textarea" name="textarea" placeholder="Pouvez-vous nous en dire plus?"></textarea>
+                    </div>
+                </div>
+
+
+                <!-- Bouton envoyer -->
+                <div class="form-group">
+                    <label class="control-label" for=""></label>
+                    <div style="text-align: center">
+                        <button id="button" name="button" class="button" type="button">Envoyer</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class=" control-label" for=""></label>
+                    <div class="d-none d-md-block d-lg-block d-xl-block"><!--version desktop-->
+                        <a href="https://fr-fr.facebook.com/idcconseils/">
+                                    <img class="img-fluid fb" src="img/fb.png" alt="facebook_icon">
+                                    <p class="fb_txt">Suivez-nous!</p></a>
+                    </div>
+                    <div class="d-block d-xs-none d-none d-sm-block d-md-none"><!--version mobile-->
+                        <a href="https://fr-fr.facebook.com/idcconseils/">
+                                    <img class="img-fluid fb_mobile" src="img/fb.png" alt="facebook_icon">
+                                    <p class="fb_txt">Suivez-nous!</p></a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+     <script src="script/jquery-3.2.1.min.js"></script>
+     <script src="script/jquery.js"></script>
+</body>
+
+</html>
