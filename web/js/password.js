@@ -11,7 +11,7 @@ var password = document.getElementById("password")
 
 function validatePassword(){
   if(password.value !== password2.value) {
-    password2.setCustomValidity("Passwords Don't Match");
+    password2.setCustomValidity("Le mot de passe ne correspond pas ");
   } else {
     password2.setCustomValidity('');
   }
