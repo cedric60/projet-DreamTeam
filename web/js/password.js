@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 
+/* global password2 */
+
 var password = document.getElementById("password")
   , confirm_password = document.getElementById("password2");
 
 function validatePassword(){
-  if(password.value != password2.value) {
+  if(password.value !== password2.value) {
     password2.setCustomValidity("Passwords Don't Match");
   } else {
     password2.setCustomValidity('');

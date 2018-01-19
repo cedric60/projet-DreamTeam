@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 class UserDAO extends DAO implements UserProviderInterface
 { // heritage la class herite de DAO(elle herite de la connexion a la base de donnee  {
@@ -95,7 +94,7 @@ class UserDAO extends DAO implements UserProviderInterface
   return $user;
  }
 
- public function registerAdmin(Request $request)//Fonction d'enregistrement d'un nouvelle administrateur
+ public function registerAdmin(Request $request,Application $app) //Fonction d'enregistrement d'un nouvelle administrateur
  {
 
   //vérification de l'existence de l'email dans la base de donée
@@ -104,12 +103,22 @@ class UserDAO extends DAO implements UserProviderInterface
    . 'FROM user '
    . 'WHERE mail = ?';
   $row = $this->getDb()->fetchAssoc($sql, array($request)); // resultat obtenu par la requete ici sous forme de tableau
-
+  
+  //$email = 'test'; // test avec une chaine qui n'est pas une adresse email
+$email = $_POST['email']; // test avec une chaine qui est une adresse email
+ 
+// Vérifie si la chaine ressemble à un email
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    return true;
+} else {
+     return false;
+}
+var_dump(filter_var($email, FILTER_VALIDATE_EMAIL));
   if ($row == true) { // Si le resultat demander est true donc l'addresse email existe en BDD on affiche un message erreur
    echo "Cet addresse email existe deja";
   } else { // Sinon si resultat est false l'email saisie n'existe pas en BDD on execute l'insertion
    // Préparer la requête
-   $q = $app['db']->prepare('INSERT INTO user VALUES (\'' . $_POST['name'] . '\', md5(\'' . $_POST['password'] . '\'),\'' . $_POST['mail'] . '\',\'' . $_POST['phonenumber'] . '\')');
+   $q = $app['db']->prepare('INSERT INTO user VALUES (\'' . $_POST['name'] . '\', \'' . $_POST['password'] . '\',\'' . $_POST['mail'] . '\',\'' . $_POST['phonenumber'] . '\')');
    try {
     // Envoyer la requête
     $q->execute(array());

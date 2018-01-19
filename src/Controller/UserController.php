@@ -22,7 +22,7 @@ class UserController {
         return $app['twig']->render('register.twig');
     }
 
-    public function saveregisterAction(Application $app) {// fonction pour s'enregistrer en tant qu'admin
+    public function saveregisterAction(Request $request, Application $app) {// fonction pour s'enregistrer en tant qu'admin
         $registration = $app['dao.user']->RegisterAdmin();
         return $app['twig']->render('login.twig');
     }

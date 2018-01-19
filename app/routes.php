@@ -20,7 +20,7 @@ $app->get('/login',"App\Controller\UserController::LoginAction")
         ->bind('Login');//Route vers la page de connexion
 
 // Register page
-$app->get('/register',"App\Controller\UserController::RegisterAction")
+$app->post('/register',"App\Controller\UserController::RegisterAction")
         ->bind('register');//Route vers la page d'enregistrement d'un nouvelle administrateur 
 $app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
         ->bind('saveregister');//Route vers la fonction de verification du formulaire
