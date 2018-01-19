@@ -1,23 +1,36 @@
 // EN CHANTIER !!!!!!!!!!!!!!!!!!!!!!!
 
-
 //cliquer sur les smileys pour sélectionner
-$(".image").on("click", function() {
-     $(this).attr("checked",true);
-     alert("ça marche");
+$('#happy').on('click', function(){
+     $('radios-0').attr("checked",true);
+     $('#happy').css('width','85%');
+     $('#middle').css('width','100%');
+     $('#unhappy').css('width','100%'); 
 });
 
+$('#middle').on('click', function(){
+    $('radios-1').attr("checked",true);
+    $('#happy').css('width','100%');
+    $('#middle').css('width','85%');
+    $('#unhappy').css('width','100%');
+});
  
+$('#unhappy').on('click', function(){
+    $('radios-2').attr("checked",true);
+    $('#happy').css('width','100%');
+    $('#middle').css('width','100%');
+    $('#unhappy').css('width','85%');
+});
+
+//cookie id
 
 
-//faire disparaître le formulaire
-/*
+/* faire disparaître le formulaire au click "envoyer"
 $(document).ready(function(){
-    $("#form-horizontal").click(function(){
-        $(this).hide();
+    $('#button').click(function(){
+        $('.form-horizontal').hide();
     });
 });
+
 */
 
-
-//cookie??
