@@ -40,21 +40,33 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.options' => array('debug' => true)
 ));
 
-//composer require dongww/silex-debugbar
-//$app->register(new Dongww\Silex\Provider\DebugBarServiceProvider());
-// Register services
-$app['dao.admin'] = function ($app) {
-    return new \App\DAO\AdminDAO($app['db']);
-};
-$app['dao.user'] = function ($app) {
-    return new \App\DAO\UserDAO($app['db']);
-};
-$app['dao.index'] = function ($app) {
-    return new \App\DAO\IndexDAO($app['db']);
-};
-$app['dao.givenanswer'] = function($app) {
-    return new \App\DAO\GivenAnswerDAO($app['db']);
-};
-$app['dao.learner'] = function($app) {
-    return new \App\DAO\LearnerDAO($app['db']);
-};
+
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path'=>__DIR__.'/../View',
+        'twig.options'=>array('debug'=>true)
+        ));
+    
+    //composer require dongww/silex-debugbar
+    //$app->register(new Dongww\Silex\Provider\DebugBarServiceProvider());
+    
+    // Register services
+    $app['dao.admin'] = function ($app) {
+        return new \App\DAO\AdminDAO($app['db']);
+    };
+    $app['dao.user'] = function ($app){
+        return new \App\DAO\UserDAO($app['db']);
+    };
+    $app['dao.index'] = function ($app) {
+        return new \App\DAO\IndexDAO($app['db']);
+    };
+    $app['dao.givenanswer'] = function($app) {
+        return new \App\DAO\GivenAnswerDAO($app['db']);
+    };
+    $app['dao.learner'] = function($app) {
+        return new \App\DAO\LearnerDAO($app['db']);
+    };
+    $app['dao.formation'] = function($app) {
+        return new \App\DAO\FormationDAO($app['db']);
+    };
+
+

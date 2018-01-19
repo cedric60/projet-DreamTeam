@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+ {% block body %}
+
+<body class="bg-dark">
+    <div class="container">
+        <div class="card card-register mx-auto mt-5">
+            <div class="card-header">Ajouter une formation</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="formation">Formation</label>
+                        <select name="formation" id="formation">
+                            <option value="">Exemple</option>
+                            <option value="newformation">Nouvelle Formation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formation">Formation</label>
+                        <input type="text" name="" id="" placeholder="Nom de la formation">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="start_date">Date de début</label><br>
+                                <input type="date">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="end_date">Date de fin</label><br>
+                                <input type="date">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary btn-block" href="">Ajouter</a>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small mt-3" href="{{ path('addlearners') }}">Ajouter des apprenants</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

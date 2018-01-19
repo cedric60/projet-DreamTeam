@@ -10,8 +10,9 @@ $app->get('/form',"App\Controller\FormController::formAction")
 $app->get('/formContact',"App\Controller\FormController::formContactAction")
         ->bind('formContact');
 
-$app->get('/listeFormation',"App\Controller\ListeController::ListeFormationAction")
-        ->bind('listeFormation');
+
+
+
 
  ////////////////////USER CONTROLLER ////////////////////////////
 
@@ -25,9 +26,16 @@ $app->post('/register',"App\Controller\UserController::RegisterAction")
 $app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
         ->bind('saveregister');//Route vers la fonction de verification du formulaire
 
+        
 // Forgot password
 $app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")
-        ->bind('forgot_password');//Route vers la page Mot de place oublié
+        ->bind('forgot_password');
+
+
+// Charts pages
+$app->get('/charts',"App\Controller\ChartController::ChartAction")
+        ->bind('charts');
+        
 
 // Reset password
 $app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction")
@@ -35,23 +43,36 @@ $app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction"
 
 
 ////////////////////// CHART CONTROLLER////////////////////////////////
+// Charts page
+$app->get('/charts',"App\Controller\ChartController::ChartAction")
+        ->bind('charts');
 
 // données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
 $app->get('/dataCharts1',"App\Controller\ChartController::DrawChartAction")
         ->bind('dataCharts1');
 // données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
-$app->get('/dataCharts',"App\Controller\ChartController::listSmileyTypeJsonAction")
+$app->get('/dataCharts',"App\Controller\ChartController::columnChartAction")
         ->bind('dataCharts');
-// Charts page
-$app->get('/charts',"App\Controller\ChartController::ChartAction")
-        ->bind('charts');
 
 
 ////////////////////// FORMATION CONTROLLER///////////////////////////////
-
 // Formation page
 $app->get('/formation',"App\Controller\FormationController::FormationAction")
         ->bind('formation');
+$app->get('/addformation',"App\Controller\FormationController::AddFormationAction")
+        ->bind('addformation');
+$app->get('/listeFormation',"App\Controller\ListeController::ListeFormationAction")
+        ->bind('listeFormation');
+
+
+
 // Learner page
 $app->get('/learners',"App\Controller\LearnerController::LearnerAction")
         ->bind('learners');
+$app->get('/addlearners',"App\Controller\LearnerController::AddLearnerAction")
+        ->bind('addlearners');
+// data pour recuperer les sessions d'une formation
+$app->get('/datasessionstart',"App\Controller\LearnerController::dataSessionStartAction")
+        ->bind('dataSessionStart');
+$app->get('/datasessionend/{id}',"App\Controller\LearnerController::dataSessionEndAction")
+        ->bind('dataSessionEnd');
