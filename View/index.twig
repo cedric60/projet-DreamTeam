@@ -1,5 +1,14 @@
 {% extends "layout.twig" %}
 
 {% block body %}
-bonjour
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="container">
+            Je suis logger
+        </div>
+    {% else %}
+        <div class="container">
+            Je suis pas logger
+        </div>
+    {% endif %}
 {% endblock %}
