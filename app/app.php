@@ -59,3 +59,6 @@
     $app['dao.learner'] = function($app) {
         return new \App\DAO\LearnerDAO($app['db']);
     };
+    $app['dao.formation'] = function($app) {
+        return new \App\DAO\FormationDAO($app['db']);
+    };

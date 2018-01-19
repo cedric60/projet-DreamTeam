@@ -26,7 +26,7 @@
     
         }
 
-        function listSmileyTypeJsonAction(Application $app) {
+        function columnChartAction(Application $app) {
             $res = $app['dao.givenanswer']->findNumberSmiley();
            
             $data = '[["name", "count"],';
