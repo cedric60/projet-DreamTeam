@@ -4,19 +4,29 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/DAO.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/learner.twig</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/login.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/IndexDAO.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Session.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/forgot-password.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/LearnerDAO.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/menu.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/register.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/formation.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/reset_password.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Controller/FormController.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Controller/IndexController.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/SessionDAO.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/app/routes.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Answer.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Question.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/layout.twig</file>
-            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Session.php</file>
-            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/forgot-password.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/chart.twig</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/UserDAO.php</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Controller/ChartController.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Formation.php</file>
-            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/menu.twig</file>
-            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/register.twig</file>
+            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/DAO/FormationDAO.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/User.php</file>
-            <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/View/reset_password.twig</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/src/Model/Learner.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/app/app.php</file>
             <file>file:/C:/xampp/htdocs/projet-DreamTeam-master/projet-DreamTeam/web/js/password.js</file>

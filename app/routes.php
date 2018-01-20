@@ -21,8 +21,9 @@ $app->get('/login',"App\Controller\UserController::LoginAction")
         ->bind('Login');//Route vers la page de connexion
 
 // Register page
-$app->post('/register',"App\Controller\UserController::RegisterAction")
+$app->get('/register',"App\Controller\UserController::RegisterAction")
         ->bind('register');//Route vers la page d'enregistrement d'un nouvelle administrateur 
+
 $app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
         ->bind('saveregister');//Route vers la fonction de verification du formulaire
 
@@ -31,11 +32,6 @@ $app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
 $app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")
         ->bind('forgot_password');
 
-
-// Charts pages
-$app->get('/charts',"App\Controller\ChartController::ChartAction")
-        ->bind('charts');
-        
 
 // Reset password
 $app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction")
@@ -53,6 +49,11 @@ $app->get('/dataCharts1',"App\Controller\ChartController::DrawChartAction")
 // données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
 $app->get('/dataCharts',"App\Controller\ChartController::columnChartAction")
         ->bind('dataCharts');
+
+// Charts pages
+$app->get('/charts',"App\Controller\ChartController::ChartAction")
+        ->bind('charts');
+        
 
 
 ////////////////////// FORMATION CONTROLLER///////////////////////////////
