@@ -21,7 +21,7 @@ $app->get('/login',"App\Controller\UserController::LoginAction")
         ->bind('Login');//Route vers la page de connexion
 
 // Register page
-$app->post('/register',"App\Controller\UserController::RegisterAction")
+$app->get('/register',"App\Controller\UserController::RegisterAction")
         ->bind('register');//Route vers la page d'enregistrement d'un nouvelle administrateur 
 $app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
         ->bind('saveregister');//Route vers la fonction de verification du formulaire
@@ -72,7 +72,7 @@ $app->get('/learners',"App\Controller\LearnerController::LearnerAction")
 $app->get('/addlearners',"App\Controller\LearnerController::AddLearnerAction")
         ->bind('addlearners');
 // data pour recuperer les sessions d'une formation
-$app->get('/datasessionstart',"App\Controller\LearnerController::dataSessionStartAction")
+$app->get('/datasessionstart/{id}',"App\Controller\LearnerController::dataSessionStartAction")
         ->bind('dataSessionStart');
 $app->get('/datasessionend/{id}',"App\Controller\LearnerController::dataSessionEndAction")
         ->bind('dataSessionEnd');
