@@ -23,7 +23,7 @@
                 <div class="card-body">
                     {% if error %}
                         <div>
-                            {{ dump(error) }}
+                            <strong>L ’ authentification a échouee</strong>
                         </div>
                     {% endif %}
                     <form method="POST" action="{{ path('login_check') }}">
