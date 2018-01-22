@@ -24,26 +24,26 @@
                                                                 'sessionEndDate' => $sessionEndDate));
         }
 
-        public function dataSessionStartAction(Application $app){
+        public function dataSessionStartAction($id, Application $app){
             
-            $res = $app['dao.formation']->findSessionStartDate();
+            $res = $app['dao.formation']->findSessionStartDate($id);
             $data = "";
             foreach ($res as $re) {
-    
-                $data .= '<option value="' . $re["start_date"] .'">' . $re["start_date"] . ' </option>';
+                $startDate = \DateTime::createFromFormat('Y-m-d', $re["start_date"])->format('d/m/Y');
+                $data .= '<option value="' . $re["start_date"] .'">' . $startDate . ' </option>';
             }
     
             return $data;
 
         
         }
-        public function dataSessionEndAction(Application $app){
+        public function dataSessionEndAction($id, Application $app){
             
-            $res = $app['dao.formation']->findSessionEndDate();
+            $res = $app['dao.formation']->findSessionEndDate($id);
             $data = "";
             foreach ($res as $re) {
-    
-                $data .= '<option value="' . $re["end_date"] .'">' . $re["end_date"] . ' </option>';
+                $endDate = \DateTime::createFromFormat('Y-m-d', $re["end_date"])->format('d/m/Y');
+                $data .= '<option value="' . $re["end_date"] .'">' . $endDate . ' </option>';
             }
     
             return $data;

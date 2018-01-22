@@ -31,30 +31,28 @@ class FormationDAO extends DAO{
 
         return $stmt;
     }
-    public function findSessionStartDate() {
-        $sql = 'SELECT
-                    formation.name,
-                    SESSION.start_date
+    public function findSessionStartDate($id) {
+        $sql = 'SELECT 
+                    s.start_date
                 FROM
                     formation
-                LEFT JOIN SESSION ON formation.idformation = SESSION.formation_idformation';
-
-        $stmt = $this->getDb()->fetchAll($sql);
-
-        return $stmt;
-    }
-    public function findSessionEndDate($id) {
-        $sql = 'SELECT SESSION
-                    .end_date
-                FROM
-                    formation
-                LEFT JOIN SESSION ON formation.idformation = SESSION.formation_idformation
+                LEFT JOIN session as s ON formation.idformation = s.formation_idformation
                 WHERE
                     formation.idformation = ?';
-        $stmt->prepare($sql, array($id));
-                
-        $stmt = $this->getDb()->fetchAll($sql);
 
+                $stmt = $this->getDb()->fetchAll($sql, array($id));
+
+                return $stmt;
+    }
+    public function findSessionEndDate($id) {
+        $sql = 'SELECT 
+                    s.end_date
+                FROM
+                    formation
+                LEFT JOIN session as s ON formation.idformation = s.formation_idformation
+                WHERE
+                    formation.idformation = ?';
+        $stmt = $this->getDb()->fetchAll($sql, array($id));
         return $stmt;
     }
     function buildDomainObject(array $row){

@@ -71,7 +71,7 @@ $app->get('/learners',"App\Controller\LearnerController::LearnerAction")
 $app->get('/addlearners',"App\Controller\LearnerController::AddLearnerAction")
         ->bind('addlearners');
 // data pour recuperer les sessions d'une formation
-$app->get('/datasessionstart',"App\Controller\LearnerController::dataSessionStartAction")
+$app->get('/datasessionstart/{id}',"App\Controller\LearnerController::dataSessionStartAction")
         ->bind('dataSessionStart');
 
 $app->get('/datasessionend/{id}',"App\Controller\LearnerController::dataSessionEndAction")
