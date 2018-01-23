@@ -66,6 +66,18 @@ fieldset {
     margin-bottom: 0;
 }
 
+#radios-0{
+    display: none;
+}
+
+#radios-1{
+    display: none;
+}
+
+#radios-2{
+    display: none;
+}
+
 #texte{
     text-align: center;
     color:#ED7B33;
@@ -80,7 +92,6 @@ fieldset {
 #selectbasic{
     margin-bottom: 3%;
 }
-
 
 
 

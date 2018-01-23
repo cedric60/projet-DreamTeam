@@ -1,6 +1,6 @@
-// EN CHANTIER !!!!!!!!!!!!!!!!!!!!!!!
 
-//cliquer sur les smileys pour sélectionner
+  //cliquer sur les smileys pour sélectionner
+
 $('#happy').on('click', function(){
      $('radios-0').attr("checked",true);
      $('#happy').css('width','85%');
@@ -22,15 +22,43 @@ $('#unhappy').on('click', function(){
     $('#unhappy').css('width','85%');
 });
 
-//cookie id
 
+  
+    
+    //vérif formulaire fontcion blabla 
+        $('#button').on('click', function(e){
+            e.preventDefault();
+             console.log("toto");
+            $formation=parseInt($_POST['#selectbasic']); 
+               
+            
+            $smiley=parseInt($_POST['.smiley']); 
+                   
+            $textarea=$_POST['#textarea'];
 
-/* faire disparaître le formulaire au click "envoyer"
-$(document).ready(function(){
-    $('#button').click(function(){
-        $('.form-horizontal').hide();
-    });
-});
+            $error=0;
+           
+            if ($formation==0){
+                $error+=1;
+                $messError.css('visibility', 'visible');
+            }else{
+                $error+=0;
+                $messError.css('visibility', 'hidden');
+            }
+        
+        /*
+            if ($smiley==0){
 
+                $error+=1;
+            }else{
+                $error+=0;
+            }
+
+            if (($smiley==2 && $textarea=="") || ($smiley==3 && $textarea=="")){
+               
+                $error+=1;
+            }else{
+                $error+=0;
+            }
 */
-
+        });
