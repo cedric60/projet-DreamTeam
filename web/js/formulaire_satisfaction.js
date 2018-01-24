@@ -27,38 +27,45 @@ $('#unhappy').on('click', function(){
     
     //vérif formulaire fontcion blabla 
         $('#button').on('click', function(e){
-            e.preventDefault();
-             console.log("toto");
-            $formation=parseInt($_POST['#selectbasic']); 
-               
             
-            $smiley=parseInt($_POST['.smiley']); 
+            e.preventDefault();
+    
+            $formation=parseInt($('#selectbasic').val()); 
+            
+            $smiley=parseInt($('input:checked').val()); 
                    
-            $textarea=$_POST['#textarea'];
+            $textarea=$('#textarea').val();
 
             $error=0;
            
             if ($formation==0){
                 $error+=1;
-                $messError.css('visibility', 'visible');
+                $('#errorformation').css('visibility', 'visible');
+                
             }else{
-                $error+=0;
-                $messError.css('visibility', 'hidden');
+                $error=0;
+                $('#errorformation').css('visibility','hidden');
             }
         
-        /*
-            if ($smiley==0){
-
+            if (isNaN($smiley)) { //pb avec value smiley
                 $error+=1;
+                $('#errorsmiley').css('visibility', 'visible');
+                
             }else{
-                $error+=0;
+                $error=0;
+                $('#errorsmiley').css('visibility','hidden');
             }
 
             if (($smiley==2 && $textarea=="") || ($smiley==3 && $textarea=="")){
-               
                 $error+=1;
+                $('#errortext').css('visibility','visible');
+                
             }else{
-                $error+=0;
+                $error=0;
+                $('#errortext').css('visibility','hidden');
             }
-*/
+            
+            if ($error==0){
+                $('#formSmiley').submit();
+            }
         });

@@ -35,17 +35,17 @@
     
     <div class="container">
         {% block formulaire %}
-        <form class="form-horizontal" action="{{ path("form_validation") }}" method="post">
+        <form id="formSmiley" class="form-horizontal" action="{{ path("form_validation") }}" method="post">
             <fieldset>
                 <div class="formgroup ">
                     <label class=" control-label" for="selectbasic"></label>
                     <div class="">
+                        <div id="errorformation" class="messError"> Veuillez sélectionner une formation </div>
                         <select id="selectbasic" name="selectbasic" class="form-control">
                             <option value=0>Veuillez sélectionner une formation</option>
                               {% for formation in formationList %}
                               <option value={{ formation.idformation }}> {{ formation.name }}</option>
-                              {% endfor %}  
-                              <div id="errorformation"> Veuillez sélectionner une formation </div>               
+                              {% endfor %}                 
                         </select>
                     </div>
                 </div>
@@ -58,23 +58,26 @@
                     </div>
 
                     <!-- Smileys -->
-                    <div class="container">
+                    <div class="container" style="padding: 0px">
+                        <div id="errorsmiley" class="messError"> Veuillez sélectionner un smiley </div>
                         <label class="radio-inline" for="radios-0">
-                            <input type="radio" name="action" id="radios-0" class="smiley" value="1" ><img class="img img-fluid smiley" id="happy" src="img/happy.png"  alt="happy"/> 
+                            <input type="radio" name="action" id="radios-0" class="smiley" value=1 ><img class="img img-fluid smiley" id="happy" src="img/happy.png"  alt="happy"/> 
                         </label>
 
                         <label class="radio-inline" for="radios-1">
-                            <input type="radio" name="action" id="radios-1" class="smiley" value="2" ><img class="img img-fluid smiley" id="middle" src="img/middle.png" alt="middle"/>
+                            <input type="radio" name="action" id="radios-1" class="smiley" value=2 ><img class="img img-fluid smiley" id="middle" src="img/middle.png" alt="middle"/>
                         </label>
 
                         <label class="radio-inline " for="radios-2">
-                            <input type="radio" name="action" id="radios-2" class="smiley" value="3" ><img class="img img-fluid smiley" id="unhappy" src="img/unhappy.png" alt="unhappy"/>
+                            <input type="radio" name="action" id="radios-2" class="smiley" value=3 ><img class="img img-fluid smiley" id="unhappy" src="img/unhappy.png" alt="unhappy"/>
                         </label>
                     </div>
+                    
                 </div>
 
                 <!-- Textarea -->
                 <div class="form-group">
+                    <div id="errortext" class="messError"> Veuillez décrire la situation </div>
                     <label class=" control-label" for="textarea"></label>
                     <div class="">
                         <textarea class="form-control" rows="10" id="textarea" name="textarea" placeholder="Pouvez-vous nous en dire plus?"></textarea>
@@ -109,10 +112,6 @@
     </div>
      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script src="/js/formulaire_satisfaction.js"></script>
-     <script>
-        $msg = $_POST['textarea'];
-        console.log($msg);
-     </script>
 </body>
 
 </html>
