@@ -25,46 +25,50 @@ $('#unhappy').on('click', function(){
 
   
     
-    //vérif formulaire fontcion blabla 
+    //vérif formulaire fontcion blabla
+
+    $('#errorformation').css('visibility','hidden');
+    $('#errorsmiley').css('visibility','hidden');
+    $('#errortext').css('visibility','hidden');
+
+
         $('#button').on('click', function(e){
-            
+         
             e.preventDefault();
     
-            $formation=parseInt($('#selectbasic').val()); 
+            $formation=$('#selectbasic').val(); 
             
             $smiley=parseInt($('input:checked').val()); 
                    
             $textarea=$('#textarea').val();
 
             $error=0;
+
            
-            if ($formation==0){
-                $error+=1;
+            if ($formation==""){
+                $error++;
                 $('#errorformation').css('visibility', 'visible');
                 
             }else{
-                $error=0;
                 $('#errorformation').css('visibility','hidden');
             }
         
-            if (isNaN($smiley)) { //pb avec value smiley
-                $error+=1;
+            if (isNaN($smiley)) { 
+                $error++;
                 $('#errorsmiley').css('visibility', 'visible');
                 
             }else{
-                $error=0;
                 $('#errorsmiley').css('visibility','hidden');
             }
 
             if (($smiley==2 && $textarea=="") || ($smiley==3 && $textarea=="")){
-                $error+=1;
+                $error++;
                 $('#errortext').css('visibility','visible');
                 
             }else{
-                $error=0;
                 $('#errortext').css('visibility','hidden');
             }
-            
+
             if ($error==0){
                 $('#formSmiley').submit();
             }

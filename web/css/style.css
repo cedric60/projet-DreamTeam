@@ -24,7 +24,7 @@ fieldset {
     margin-left: 80%;
 }
 
-.form-group { /*empêche le scroll*/
+.form-group { /*empêche le scroll, 10px mess error*/
      margin-bottom: 0; 
 }
 
