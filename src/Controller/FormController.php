@@ -7,7 +7,8 @@ use Silex\Application;
 class FormController {
 
     public function formAction(Application $app) {
-        return $app['twig']->render('formulaire_satisfaction.twig');
+        $formationList = $app['dao.formation']->findAll();
+        return $app['twig']->render('formulaire_satisfaction.twig', array('formationList' => $formationList));
     }
     public function formContactAction(){
 
@@ -15,7 +16,8 @@ class FormController {
 
     public function formValidate(Application $app){
         
-        return $app['twig']->render('index.twig');
+       // return $app['twig']->render('index.twig');
+       return false;
     }
 
 }

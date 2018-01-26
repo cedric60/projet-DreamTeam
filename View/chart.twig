@@ -1,10 +1,40 @@
 {% extends "layout.twig" %}
 
 {% block body %} 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <select>
+                    <option>Selectionnez une formation</option>
+                </select>
+                <div class="row">
+                    <label>Entre le :</label>
+                    <input type="date">
+                    <label>et le :</label>
+                    <input type="date">
+                </div>
+            </form>
+            <div  id='draw_chart'>
+            </div>
+        </div>
 
-<div id='draw_chart'></div>
-
-<div id='column_chart'></div>
+        <div class="col-md-6">
+            <form>
+                <select>
+                    <option>Selectionnez une formation</option>
+                </select>
+                <div class="row">
+                    <label>Entre le :</label>
+                    <input type="date">
+                    <label>et le :</label>
+                    <input type="date">
+                </div>
+            </form>
+            <div id='column_chart'></div>
+        </div>
+    </div> 
+</div>
 
 {% endblock %}
 

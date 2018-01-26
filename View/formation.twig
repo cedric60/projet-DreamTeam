@@ -2,48 +2,48 @@
 
 {% block body %} 
 
-  <h1>Formations</h1>
-  <hr>
-  <!-- Icon Cards-->
-  <div class="row">
-    {% for formation in formationList %}
-      <div class="col-xl-3 col-sm-6 mb-3">
-        {% set buttoncolor = ['bg-warning', 'bg-primary', 'bg-danger','bg-success' , 'bg-info'] %}
+    <div>
+        <a href="{{ path('addformation') }}" style="float: right; font-size: small;">Ajouter une formation</a>
+        <h1>Formations</h1>
+    </div>
+    <hr>
+    <div class="row">
+        {% for formation in formationList %}
+         
+            <div class="col-xl-3 col-sm-6 mb-3">
+                {% set buttoncolor = ['bg-warning', 'bg-primary', 'bg-danger','bg-success' , 'bg-info'] %}
 
-        <div class="card text-white {{ cycle(buttoncolor, loop.index0) }} o-hidden h-100">
-          <div class="card-body">
-            <div class="card-body-icon">
-              <i class="fa fa-fw fa-list"></i>
+                <div class="card text-white {{ cycle(buttoncolor, loop.index0) }} o-hidden h-100">
+                    <div class="card-body">
+                        <div class="card-body-icon">
+                            <i class="fa fa-fw fa-list"></i>
+                        </div>
+                        <div class="mr-5 idformation">
+                            {{ formation.name }}
+                        </div>
+                    </div>
+                    <a class="card-footer text-white clearfix small z-1 flip" id="{{ formation.idformation }}" data-toggle="collapse" href="#collapse{{loop.index}}" role="button" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+                        <span class="float-left">Details</span>
+                        <span class="float-right">
+                            <i class="fa fa-angle-right"></i>
+                        </span>
+                    </a>
+                    <div class="card-footer text-white clearfix small z-1 details collapse" id="collapse{{loop.index}}">
+                        <p>session active<br>
+                            <span class="session_active" id="{{ formation.idformation }}"></span>
+                        </p>
+                        <p><a href="{{ path('addformation') }}" style="float: right; font-size: small; color:black">Ajouter une session</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="mr-5">{{ formation.name }}
-            </div>
-          </div>
-          <a class="card-footer text-white clearfix small z-1 flip" href="#" id="flip{{loop.index}}">
-            <span class="float-left">Details</span>
-            <span class="float-right">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </a>
-          <div class="card-footer text-white clearfix small z-1 details" style="display:none;">
-            <p>session active</p>
-            <p>dernieres sessions</p>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
+        {% endfor %}
 
-  {% endblock %}
+    {% endblock %}
 
-  {% block js %}
+    {% block js %}
 
-    {{ parent() }}
+        {{ parent() }}
 
-    <script>
-    $(document).ready(function(){
-      $(".flip").click(function(){
-        $(".details").slideToggle("slow");
-      });
-    });
-    </script>
+        <script src="/js/sessionactive.js"></script>
 
-  {% endblock %}
+    {% endblock %}

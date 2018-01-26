@@ -19,6 +19,24 @@ class FormationDAO extends DAO{
         return $stmt;
     }
 
+    public function findFormationAndSession() {
+        $sql = 'SELECT
+                    formation.idformation,
+                    formation.name,
+                    s.idsession,
+                    s.start_date,
+                    s.end_date
+                FROM
+                    formation
+                LEFT JOIN session AS s
+                ON
+                    formation.idformation = s.formation_idformation'
+                ;
+        $stmt = $this->getDb()->fetchAll($sql);
+
+        return $stmt;
+    }
+
     public function sessionStartDate() {
         $sql = 'SELECT  DISTINCT session.start_date FROM `session` ORDER BY session.start_date DESC';
         $stmt = $this->getDb()->fetchAll($sql);
@@ -31,32 +49,80 @@ class FormationDAO extends DAO{
 
         return $stmt;
     }
-    public function findSessionStartDate() {
+
+    public function findSessions($id) {
         $sql = 'SELECT
+                    formation.idformation,
                     formation.name,
-                    SESSION.start_date
-                FROM
-                    formation
-                LEFT JOIN SESSION ON formation.idformation = SESSION.formation_idformation';
-
-        $stmt = $this->getDb()->fetchAll($sql);
-
-        return $stmt;
-    }
-    public function findSessionEndDate($id) {
-        $sql = 'SELECT SESSION
-                    .end_date
+                    SESSION.idsession,
+                    SESSION.start_date,
+                    SESSION.end_date
                 FROM
                     formation
                 LEFT JOIN SESSION ON formation.idformation = SESSION.formation_idformation
                 WHERE
                     formation.idformation = ?';
-        $stmt->prepare($sql, array($id));
-                
+
+                $stmt = $this->getDb()->fetchAll($sql, array($id));
+
+                return $stmt;
+    }
+
+    public function findSessionStartDate($id) {
+        $sql = 'SELECT 
+                    s.start_date
+                FROM
+                    formation
+                LEFT JOIN session as s ON formation.idformation = s.formation_idformation
+                WHERE
+                    formation.idformation = ?';
+
+                $stmt = $this->getDb()->fetchAll($sql, array($id));
+
+                return $stmt;
+    }
+    public function findSessionEndDate($id) {
+        $sql = 'SELECT 
+                    s.end_date
+                FROM
+                    formation
+                LEFT JOIN session as s ON formation.idformation = s.formation_idformation
+                WHERE
+                    formation.idformation = ?';
+        $stmt = $this->getDb()->fetchAll($sql, array($id));
+        return $stmt;
+    }
+    public function findActiveSessions() {
+        $sql = 'SELECT 
+                   formation.name, session.start_date, session.end_date
+                FROM 
+                    `formation` 
+                LEFT JOIN session ON session.formation_idformation = formation.idformation 
+                WHERE now() BETWEEN session.start_date AND session.end_date';
+
         $stmt = $this->getDb()->fetchAll($sql);
+        return $stmt;
+    }
+
+    public function findActiveSession($id) {
+        $sql = 'SELECT 
+                   formation.name, session.start_date, session.end_date
+                FROM 
+                    formation 
+                LEFT JOIN session ON session.formation_idformation = formation.idformation 
+                WHERE now() BETWEEN session.start_date AND session.end_date
+                AND formation.idformation = ?';
+
+        $stmt = $this->getDb()->fetchAll($sql, array($id));
+        return $stmt;
+    }
+    public function findLastId() {
+        $sql = 'SELECT MAX( idformation ) FROM formation';
+        $stmt = $this->getDb()->fetchAssoc($sql, array());
 
         return $stmt;
     }
+
     function buildDomainObject(array $row){
 
     }
