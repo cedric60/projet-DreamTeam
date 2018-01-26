@@ -4,11 +4,14 @@
 
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div class="container">
-            Je suis logger
+            Bienvenue
         </div>
     {% else %}
         <div class="container">
-            Je suis pas logger
+           <a class="nav-link" href="{{ path('Login') }}">
+            <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Connexion</span>
+        </a>
         </div>
     {% endif %}
 {% endblock %}

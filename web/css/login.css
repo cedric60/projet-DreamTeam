@@ -1,3 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25 janv. 2018, 22:09:20
+    Author     : jossar
+*/
+
 /*!
  * Start Bootstrap - SB Admin v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/sb-admin)
  * Copyright 2013-2017 Start Bootstrap
@@ -8,7 +18,11 @@ html {
   min-height: 100%; }
 
 body {
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+  background-image: url("/img/logoIDC1.png");
+  background-color: black;
+  
+}
 
 body.sticky-footer {
   margin-bottom: 56px; }

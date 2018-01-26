@@ -1,53 +1,53 @@
 {% extends "layout.twig" %}
 
-{% block body %} 
-
-
-    <body class="bg-dark">
-        <div class="container">
-            <div class="card card-register mx-auto mt-5">
-                <div class="card-header text-center">Enregistrez un administrateur</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ path('saveregister') }}">
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <label >Nom</label>
-                                    <input name="name" class="form-control"  type="text" aria-describedby="nameHelp" placeholder="Entrez votre nom">
-                                </div>
-                                <div class="col-md-6">
-                                    <label >Numeros de telephone</label>
-                                    <input name="phonenumber" class="form-control"  type="text" aria-describedby="nameHelp" placeholder="Entrez votre numeros de téléphone">
-                                </div>
-                            </div>
+{% block body %}
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Enregistrer un administrateur</div>
+        <span id="msg_confirme1"></span>
+        <div class="card-body">
+            <form  method="POST" id="register" >
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="nom">Nom</label>
+                            <input name="nom" class="form-control"  type="text" aria-describedby="nameHelp" placeholder="Entrez votre nom" id="nom" >
+                            <span id="msg_nom"></span>
                         </div>
-                        <div class="form-group">
-                            <label >Addresse Mail</label>
-                            <input class="form-control"  type="email" aria-describedby="emailHelp" placeholder="Enter email" name="mail" >
+                        <div class="col-md-6">
+                            <label class="required" for="telephone"> Numero de telephone ( ex:0143... )</label>
+                            <input name="telephone" class="form-control"  type="tel"  placeholder="Entrez votre numero de téléphone"id="telephone"pattern="[0-9]{10}" >
+                            <span id="msg_tel"></span>
                         </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <label >Mot de Passe</label>
-                                    <input class="form-control"  type="password" placeholder="Password" id="password" name="_password">
-                                </div>
-                                <div class="col-md-6">
-                                    <label >Confirmez votre Mot de Passe</label>
-                                    <input class="form-control"  type="password" placeholder="Confirm password"id="password2" name="password2">
-                                </div>
-                            </div>
-                        </div>
-                        <input class="btn btn-success text-center" type="submit" value="Validez">
-                    </form>
-
+                    </div>
                 </div>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label class="required" for="email">Addresse Mail</label>
+                    <input class="form-control"  type="email"  placeholder="Enter email" name="email" id="email" >
+                    <span id="msg_email"></span>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label >Mot de Passe</label>
+                            <input class="form-control"  type="password" placeholder="Mot de passe" name="_password" id="password">
+                        </div>
+                        <div class="col-md-6">
+                            <label >Confirmez votre Mot de Passe</label>
+                            <input class="form-control"  type="password" placeholder="Confirmez le mot de passe" name="password2" id="password2">
+                            <span id="msg_confirme2"></span>
+                        </div>
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Validez">
+                <span id="msg_confirme1"></span>
+            </form>
 
-    </body>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
 {% block js %}
     {{ parent() }}
-    <script src="web/js/password.js" type="text/javascript"></script>
+    <script src="js/password.js"></script>
 {% endblock %}
-

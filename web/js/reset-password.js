@@ -1,24 +1,25 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 $(function () {
-    var nom = $('#nom');
-    var telephone = $('#telephone');
     var email = $('#email');
     var password = $('#password');
     var password2 = $('#password2');
-    var errors = false;
+    var messageok = "Bravo votre mot de passe a bien été modifié";
     var message = "Merci de remplir ce champs";
     var messpass = "Veuillez saisir le meme mot de passe";
-    var messageerreur = "L'enregistrement n'a pas été effectué, cet email est déja utilisé !!!";
-    var messageok = "L'utilisateur a bien été ajouté";
-    var formulaire = $('#register');
+    var messageerreur = "Veuillez entrer l'email qui a servi à la reinitialisation"
+    var formulaire = $('#reset');
 
     // Soumission du formulaire
-    $('#register').on('submit', function (e) {
+    $('#reset').on('submit', function (e) {
         e.preventDefault(); // On empêche l'envoi du formulaire
 
         // On vérifie la longueur de la valeur sélectionnée dans le select
         // Les classes .has-error et .has-success proviennent de bootstrap et doivent être appliqué sur la classe parente .form-group
-
-        // On vérifie la longueur des champs (minimum 1 caractères)
         if (email.val().length == 0) {
             email.parent().addClass('has-error');
             errors = true;
@@ -29,33 +30,33 @@ $(function () {
             email.css("border-color", "green");
         }
 
-        if (nom.val().length == 0) {
-            nom.parent().addClass('has-error');
+        if (password2.val().length == 0) {
+            password2.parent().addClass('has-error');
             errors = true;
-            nom.css("border-color", "red");
-            $("#msg_nom").html(message);
+            password2.css("border-color", "red");
+            $("#msg_pass2").html(message);
         } else {
-            nom.parent().addClass('has-success');
-            nom.css("border-color", "green");
+            password2.parent().addClass('has-success');
+            password2.css("border-color", "green");
         }
 
-
-        if (telephone.val().length == 0) {
-            telephone.parent().addClass('has-error');
+        if (password.val().length == 0) {
+            password.parent().addClass('has-error');
             errors = true;
-            telephone.css("border-color", "red");
-            $("#msg_tel").html(message);
+            password.css("border-color", "red");
+            $("#msg_pass").html(message);
         } else {
-            telephone.parent().addClass('has-success');
-            telephone.css("border-color", "green");
+            password.parent().addClass('has-success');
+            password.css("border-color", "green");
         }
+
 
         //Vérifier que les 2 mots de passe correspondent
         if (password.val() != password2.val()) {
             password.parent().addClass('has-error');
             errors = true;
             password2.css("border-color", "red");
-            $("#msg_confirme2").html(messpass);
+            $("#msg_confirme").html(messpass);
         } else {
             password.parent().addClass('has-sucess');
             password2.css("border-color", "green");
@@ -64,22 +65,19 @@ $(function () {
         if (errors === false) {
 
             $.ajax({
-                url: "/saveregister",
-                method: "GET",
+                url: "/reset-password.php",
+                method: "POST",
                 data: $("form").serialize(),
                 success: function (data) { // Je récupère la réponse du fichier PHP
-                    
-                    if (data === "1") {
-                        
+                    alert(data);
+                    if (data == 1) {
+
                         $("#msg_confirme1").html(messageok);
-                        cacherFormulaire();
+
                     } else {
-                        alert("ko");
                         $("#msg_confirme1").html(messageerreur);
                     }
                 }
-                
-                
 
             });
 
@@ -90,20 +88,12 @@ $(function () {
 
 
     // On retire les classes .has-success ou .has-error dès que les champs changent
-    nom.on('change', function (e) {
-        $(this).parent().removeClass('has-success has-error');
-        errors = false;
-    });
-
-    telephone.on('change', function (e) {
-        $(this).parent().removeClass('has-success has-error');
-        errors = false;
-    });
 
     email.on('change', function (e) {
         $(this).parent().removeClass('has-success has-error');
         errors = false;
     });
+
 
     password.on('change', function (e) {
         $(this).parent().removeClass('has-success has-error');
@@ -121,3 +111,4 @@ $(function () {
 
 
 });
+
