@@ -15,39 +15,125 @@
             $learnersList = $app['dao.learner']->findAll();
             return $app['twig']->render('learner.twig', array('learnersList' => $learnersList));
         }
-        public function AddLearnerAction(Application $app){
+
+        public function addLearnerAction(Application $app){
             $formationList = $app['dao.formation']->findAll();
-            $sessionStartDate = $app['dao.formation']->sessionStartDate();
-            $sessionEndDate = $app['dao.formation']->sessionEndDate();
-            return $app['twig']->render('addlearner.twig', array('formationList' => $formationList,
-                                                                 'sessionStartDate' => $sessionStartDate,
-                                                                'sessionEndDate' => $sessionEndDate));
+            return $app['twig']->render('addlearners.twig', array('formationList' => $formationList));
         }
 
-        public function dataSessionStartAction($id, Application $app){
+        public function addNewLearnerAction(Application $app){
+            $lastname = $_POST['lastname'];
+            $firstname =  $_POST['firstname']; 
+            $mail = $_POST['mail'];
+            $phonenumber = $_POST['phonenumber'];
+            $formationId = (int)($_POST['formation']);
+            $sessionId = (int)($_POST['session']);           
+            $error = false;
+
+            if(strlen($lastname) == 0 || strlen($lastname) > 45){
+                echo 'veuillez renseigner le nom';
+                $error = true;
+            }
+            if(strlen($firstname) == 0 || strlen($firstname) > 45){
+                echo 'veuillez renseigner le prenom';
+                $error = true;
+            }
+            if(strlen($mail) == 0 || strlen($mail) > 45){
+                echo 'veuillez renseigner le mail';
+                $error = true;
+            }
+            if(filter_var($mail, FILTER_VALIDATE_EMAIL) == false) { //Validation d'une adresse de messagerie.
+                echo 'La variable est une adresse de messagerie invalide !';
+                $error = true;
+            }
+            if(strlen($phonenumber) != 0 && !is_numeric($phonenumber) || strlen($phonenumber) > 10){
+                echo 'veuillez renseigner le tel';
+                $error = true;
+            }
+            if($formationId == 0 ){
+                echo 'veuillez selectionner une formation';
+                $error = true;
+            }
+            if($sessionId == 0){
+                echo 'veuillez selectionner une session';
+                $error = true;
+            }
+
+            if($error == false){
+            //Préparer la requête
+            $q = $app['db']->prepare("INSERT INTO `learner`(`lastname`, `firstname`, `mail`, `phonenumber`) VALUES ('$lastname', '$firstname', '$mail', '$phonenumber')");
+            // Envoyer la requête
+            $q->execute(array());
+            $arraylearnerId = $app['dao.learner']->findLastId();
+            $learnerId = (int)($arraylearnerId["MAX( idlearner )"]);
+            $sql = $app['db']->prepare("INSERT INTO `session_has_learner`(`session_idsession`, `learner_idlearner`) VALUES ('$sessionId', '$learnerId')");
+            $sql->execute(array());
             
-            $res = $app['dao.formation']->findSessionStartDate($id);
+            }
+            
+            $formationList = $app['dao.formation']->findAll();
+            return $app['twig']->render('addlearners.twig', array('formationList' => $formationList));
+            
+
+        }
+
+        public function modifLearnerAction($id, Application $app){
+            $learnersList = $app['dao.learner']->find($id);
+            return $app['twig']->render('modiflearner.twig', array('learnersList' => $learnersList,));
+        }
+        public function saveModifLearnerAction($id, Application $app){
+            $id = (int)($_POST['learnerId']);
+            $lastname = $_POST['lastname'];
+            $firstname =  $_POST['firstname']; 
+            $mail = $_POST['mail'];
+            $phonenumber = $_POST['phonenumber'];
+            $error = false;
+
+            if(strlen($lastname) == 0 || strlen($lastname) > 45){
+                echo 'veuillez renseigner le nom';
+                $error = true;
+            }
+            if(strlen($firstname) == 0 || strlen($firstname) > 45){
+                echo 'veuillez renseigner le prenom';
+                $error = true;
+            }
+            if(strlen($mail) == 0 || strlen($mail) > 45){
+                echo 'veuillez renseigner le mail';
+                $error = true;
+            }
+            if(filter_var($mail, FILTER_VALIDATE_EMAIL) == false) { //Validation d'une adresse de messagerie.
+                echo 'La variable est une adresse de messagerie invalide !';
+                $error = true;
+            }
+            if(strlen($phonenumber) != 0 && !is_numeric($phonenumber) || strlen($phonenumber) > 10){
+                echo 'veuillez renseigner le tel';
+                $error = true;
+            }
+
+            if($error == false){
+            //Préparer la requête
+            $q = $app['db']->prepare(" UPDATE `learner` SET `lastname`= '$lastname',`firstname`= '$firstname',`mail`= '$mail',`phonenumber`= '$phonenumber' WHERE `idlearner`= $id");
+            // Envoyer la requête
+            $q->execute(array());
+            }
+     
+            $learnersList = $app['dao.learner']->find($id);
+            return $app['twig']->render('modiflearner.twig', array('learnersList' => $learnersList));
+            
+
+        }
+
+        public function dataSessionsAction($id, Application $app){
+            
+            $res = $app['dao.formation']->findSessions($id);
             $data = "";
             foreach ($res as $re) {
                 $startDate = \DateTime::createFromFormat('Y-m-d', $re["start_date"])->format('d/m/Y');
-                $data .= '<option value="' . $re["start_date"] .'">' . $startDate . ' </option>';
-            }
-    
-            return $data;
-
-        
-        }
-        public function dataSessionEndAction($id, Application $app){
-            
-            $res = $app['dao.formation']->findSessionEndDate($id);
-            $data = "";
-            foreach ($res as $re) {
                 $endDate = \DateTime::createFromFormat('Y-m-d', $re["end_date"])->format('d/m/Y');
-                $data .= '<option value="' . $re["end_date"] .'">' . $endDate . ' </option>';
+                $data .= '<option value="' . $re["idsession"] .'">Du '. $startDate . ' au ' . $endDate . ' </option>';
             }
     
             return $data;
-
-        
         }
+
     }

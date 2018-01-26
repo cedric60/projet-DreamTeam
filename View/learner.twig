@@ -6,41 +6,47 @@
     <!-- Example DataTables Card-->
     <div class="card mb-3">
         <div class="card-header">
-            <i class="fa fa-table"></i> Apprenants</div>
+            <i class="fa fa-table"></i> Apprenants<a href="{{ path('addlearners') }}" style="float: right;
+    font-size: small;">Ajouter un apprenant</a></div>
+            
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Email</th>
                                 <th>Formation</th>
                                 <th>Date de debut</th>
                                 <th>Date de fin</th>
+                                <th>Modifier</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Email</th>
                                 <th>Formation</th>
                                 <th>Date de debut</th>
                                 <th>Date de fin</th>
-                                <th></th>
+                                <th>Modifier</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             {% for learner in learnersList %}
                                 <tr>
+                                    <td>{{ learner.idlearner }}</td>
                                     <td>{{ learner.lastname }}</td>
                                     <td>{{ learner.firstname }}</td>
                                     <td>{{ learner.mail }}</td>
                                     <td>{{ learner.name }}</td>
                                     <td>{{ learner.start_date|date('d/m/Y') }}</td>
                                     <td>{{ learner.end_date|date('d/m/Y') }}</td>
-                                    <td><a href="{{ path('addlearners') }}">Modifier</a></td>
+                                    <td><a href="{{ path('modiflearners', {id:learner.idlearner}) }}">Modifier</a></td>
                                 </tr> 
                             {% endfor %}  
                         </tbody>
