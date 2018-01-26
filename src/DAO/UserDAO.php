@@ -95,6 +95,12 @@ class UserDAO extends DAO implements UserProviderInterface
         return $user;
     }
 
+    /**
+     * 
+     * @param Request $request
+     * @param Application $app
+     * @return string
+     */
     public function registerAdmin(Request $request, Application $app)
     {
 
@@ -136,8 +142,7 @@ class UserDAO extends DAO implements UserProviderInterface
             }
             //Encodage du mot de passe
             // Initialisation du Salt
-            
-
+            // 
             //Préparer la requête
             $ql = $app['db']->prepare("INSERT INTO user (name, password, mail, phonenumber) VALUES ('$nom', '$password', '$email', '$telephone')");
             // Envoyer la requête
@@ -149,6 +154,12 @@ class UserDAO extends DAO implements UserProviderInterface
         }
     }
 
+    /**
+     * 
+     * @param Request $request
+     * @param Application $app
+     * @return string
+     */
     public function forgotPassword(Request $request, Application $app)
     {
         //Initialisation des variables 
@@ -177,6 +188,12 @@ class UserDAO extends DAO implements UserProviderInterface
         }
     }
 
+    /**
+     * 
+     * @param Request $request
+     * @param Application $app
+     * @return string
+     */
     public function resetPassword(Request $request, Application $app)
     {
         //Initialisation des variables 
@@ -203,9 +220,11 @@ class UserDAO extends DAO implements UserProviderInterface
             }
 
             //Préparer la requête
-            $ql = $app['db']->prepare("UPDATE INTO user (password) VALUES ('$password') WHERE mail ='$email'");
-            // Envoyer la requête
-            $ql->execute();
+            $ql = 'UPDATE password '
+                . 'FROM user '
+                . 'WHERE mail = $email';
+           
+
 
 
             return "1";

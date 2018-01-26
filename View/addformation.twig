@@ -17,57 +17,57 @@
     </head>
 
 
-{% block body %}
+    {% block body %}
 
-<body class="bg-dark">
-    <div class="container">
-        <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Ajouter une formation</div>
-            <div class="card-body">
-                <form method="POST" action ="{{ path('saveformation') }}" id="addformationform">
-                    <div class="form-group">
-                        <label for="formation">Formation</label>
-                        <select name="formation" id="formation">
-                            <option value='0' selected="selected">Veuillez selectionnez une catégorie</option>
-                            <option value='9999'>Nouvelle Formation</option>
-                            {% for formation in formationList %}
-                                <option value="{{ formation.idformation }}">{{ formation.name }}</option>
-                            {% endfor %}
-                        </select>
-                        <br /><span id="erreurformation"></span>
-                    </div>
-                    <div class="form-group" style="display:none" id="newformationdiv">
-                        <label for="formation">Nouvelle formation</label>
-                        <input type="text" name="newformation" id="newformation" placeholder="Nom de la formation">
-                        <br /><span id="erreurnewformation"></span>
-                    </div> 
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="start_date">Date de début</label><br>
-                                <input type="date" name ="start_date" id="start_date">
-                                <br /><span id="erreurstart"></span>
-                            </div> 
-                            <div class="col-md-6">
-                                <label for="end_date">Date de fin</label><br>
-                                <input type="date" name ="end_date" id="end_date">
-                                <br /><span id="erreurend"></span>
+        <body class="bg-dark">
+            <div class="container">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header">Ajouter une formation</div>
+                    <div class="card-body">
+                        <form method="POST" action ="{{ path('saveformation') }}" id="addformationform">
+                            <div class="form-group">
+                                <label for="formation">Formation</label>
+                                <select name="formation" id="formation">
+                                    <option value='0' selected="selected">Veuillez selectionnez une catégorie</option>
+                                    <option value='9999'>Nouvelle Formation</option>
+                                    {% for formation in formationList %}
+                                        <option value="{{ formation.idformation }}">{{ formation.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br /><span id="erreurformation"></span>
                             </div>
+                            <div class="form-group" style="display:none" id="newformationdiv">
+                                <label for="formation">Nouvelle formation</label>
+                                <input type="text" name="newformation" id="newformation" placeholder="Nom de la formation">
+                                <br /><span id="erreurnewformation"></span>
+                            </div> 
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="start_date">Date de début</label><br>
+                                        <input type="date" name ="start_date" id="start_date">
+                                        <br /><span id="erreurstart"></span>
+                                    </div> 
+                                    <div class="col-md-6">
+                                        <label for="end_date">Date de fin</label><br>
+                                        <input type="date" name ="end_date" id="end_date">
+                                        <br /><span id="erreurend"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary btn-block" id="button" type="submit" href="{{ path('saveformation') }}">Ajouter</a>
+                        </form>
+                        <div class="text-center">
+                            <a class="d-block small mt-3" href="{{ path('addlearners') }}">Ajouter des apprenants</a>
                         </div>
+                        <a class="btn btn-danger btn-sm" href="{{ path('formation') }}">Retour</a>
                     </div>
-                    <a class="btn btn-primary btn-block" id="button" type="submit" href="{{ path('saveformation') }}">Ajouter</a>
-                </form>
-                <div class="text-center">
-                    <a class="d-block small mt-3" href="{{ path('addlearners') }}">Ajouter des apprenants</a>
                 </div>
-                <a class="btn btn-danger btn-sm" href="{{ path('formation') }}">Retour</a>
             </div>
-        </div>
-    </div>
-</body>
-{% endblock %}
+        </body>
+    {% endblock %}
 
-<!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>

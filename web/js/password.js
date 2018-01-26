@@ -68,9 +68,9 @@ $(function () {
                 method: "GET",
                 data: $("form").serialize(),
                 success: function (data) { // Je récupère la réponse du fichier PHP
-                    
+
                     if (data === "1") {
-                        
+
                         $("#msg_confirme1").html(messageok);
                         cacherFormulaire();
                     } else {
@@ -78,8 +78,8 @@ $(function () {
                         $("#msg_confirme1").html(messageerreur);
                     }
                 }
-                
-                
+
+
 
             });
 

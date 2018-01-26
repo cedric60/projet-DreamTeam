@@ -11,27 +11,29 @@
  *
  * @author Cédric
  */
-class Session {
-    
+class Session
+{
+
     private $startDate;
     private $endDate;
 
-    function getStartDate() {
+    function getStartDate()
+    {
         return $this->startDate;
     }
 
-    function getEndDate() {
+    function getEndDate()
+    {
         return $this->endDate;
     }
 
-    function setStartDate($startDate) {
+    function setStartDate($startDate)
+    {
         $this->startDate = $startDate;
     }
 
-    function setEndDate($endDate) {
+    function setEndDate($endDate)
+    {
         $this->endDate = $endDate;
     }
-
-
-    
 }

@@ -1,4 +1,4 @@
-$('select#formation').on('change', function() {
+$('select#formation').on('change', function () {
 
     if ($('select#formation option:selected').val() == 9999) {
         $('#newformationdiv').css({
@@ -7,13 +7,13 @@ $('select#formation').on('change', function() {
     }
 })
 
-$('#button').on('click', function(e) {
+$('#button').on('click', function (e) {
 
     e.preventDefault();
     var $selectFormation = $('select#formation option:selected').val(),
-        $newformation = $('#newformation').val(),
-        $start = $('#start_date').val(),
-        $end = $('#end_date').val();
+            $newformation = $('#newformation').val(),
+            $start = $('#start_date').val(),
+            $end = $('#end_date').val();
 
 
     $error = false;

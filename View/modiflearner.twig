@@ -17,60 +17,60 @@
     </head>
 
 
-{% block body %}
+    {% block body %}
 
-<body class="bg-dark">
-    <div class="container-fluid">
-        <div class="card card-register mx-auto mt-5">
-            <div class="card-header">Modifier un apprenant</div>
-            <div class="card-body">
-                <form method="POST" action="{{ path('savemodiflearners', {id:learnersList.idlearner, fid:learnersList.idformation}) }}" id="modifLearnerForm">
-                    <div class="form-group" style="display:none;">
-                        <div class="form-row">
-                            <label for="lastname">Id</label>
-                            <input class="form-control" id="learnerId" type="text" name="learnerId" placeholder="learnerId" value="{{ learnersList.idlearner }}">
-                        </div>
+        <body class="bg-dark">
+            <div class="container-fluid">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header">Modifier un apprenant</div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ path('savemodiflearners', {id:learnersList.idlearner, fid:learnersList.idformation}) }}" id="modifLearnerForm">
+                            <div class="form-group" style="display:none;">
+                                <div class="form-row">
+                                    <label for="lastname">Id</label>
+                                    <input class="form-control" id="learnerId" type="text" name="learnerId" placeholder="learnerId" value="{{ learnersList.idlearner }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="lastname">Nom</label>
+                                        <input class="form-control" id="lastname" type="text" name="lastname" aria-describedby="nameHelp" placeholder="Nom" value="{{ learnersList.lastname }}">
+                                        <span id="erreurlastname"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="firstname">Prénom</label>
+                                        <input class="form-control" id="firstname" type="text" name="firstname" aria-describedby="nameHelp" placeholder="" value="{{ learnersList.firstname }}">
+                                        <span id="erreurfirstname"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="mail">Email</label>
+                                        <input class="form-control" id="mail" type="email" name="mail" aria-describedby="emailhelp" placeholder="Email" value="{{ learnersList.mail }}">
+                                        <span id="erreurmail"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phonenumber">Téléphone</label>
+                                        <input class="form-control" id="phonenumber" type="text" name="phonenumber" aria-describedby="phonenumberhelp" placeholder="Téléphone" value="{{ learnersList.phonenumber }}">
+                                        <span id="erreurphone"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" id="button" type="submit" href="{{ path('savemodiflearners', {id:learnersList.idlearner, fid:learnersList.idformation}) }}">Modifier</button>
+                            <br />
+                        </form>
+                        <a class="btn btn-danger btn-sm" href="{{ path('learners') }}">Retour</a>
                     </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="lastname">Nom</label>
-                                <input class="form-control" id="lastname" type="text" name="lastname" aria-describedby="nameHelp" placeholder="Nom" value="{{ learnersList.lastname }}">
-                                <span id="erreurlastname"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="firstname">Prénom</label>
-                                <input class="form-control" id="firstname" type="text" name="firstname" aria-describedby="nameHelp" placeholder="" value="{{ learnersList.firstname }}">
-                                <span id="erreurfirstname"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="mail">Email</label>
-                                <input class="form-control" id="mail" type="email" name="mail" aria-describedby="emailhelp" placeholder="Email" value="{{ learnersList.mail }}">
-                                <span id="erreurmail"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phonenumber">Téléphone</label>
-                                <input class="form-control" id="phonenumber" type="text" name="phonenumber" aria-describedby="phonenumberhelp" placeholder="Téléphone" value="{{ learnersList.phonenumber }}">
-                                <span id="erreurphone"></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary btn-block" id="button" type="submit" href="{{ path('savemodiflearners', {id:learnersList.idlearner, fid:learnersList.idformation}) }}">Modifier</button>
-                    <br />
-                </form>
-                <a class="btn btn-danger btn-sm" href="{{ path('learners') }}">Retour</a>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
+        </body>
 
-{% endblock %}
-<!-- Bootstrap core JavaScript-->
+    {% endblock %}
+    <!-- Bootstrap core JavaScript-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
