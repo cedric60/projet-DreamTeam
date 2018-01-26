@@ -2,6 +2,7 @@
 
 namespace App\DAO;
 
+use Silex\Application;
 use App\Model\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -94,61 +95,122 @@ class UserDAO extends DAO implements UserProviderInterface
         return $user;
     }
 
-    public function registerAdmin(Request $request) //Fonction d'enregistrement d'un nouvelle administrateur
+    public function registerAdmin(Request $request, Application $app)
     {
 
-        //vérification de l'existence de l'email dans la base de donée
-        // requete pour recuperer si addresse mail existant deja en BDD
-        $envoie = $_POST['mail'];
-        $sql   = "SELECT mail FROM user WHERE mail = ?";
-        $query = $this->getDb()->fetchAssoc($sql, array($envoie));
-        if ($query) {
-            // Pseudo déjà utilisé
+        //Initialisation des variables 
+        $nom       = $request->get('nom');
+        $telephone = $request->get('telephone');
+        $email     = $request->get("email");
+        $password  = $request->get('_password');
 
-            return false;
-        } else { // Sinon si resultat est false l'email saisie n'existe pas en BDD on execute l'insertion
-            // Préparer la requête
-            $q = $this->getDb()->prepare('INSERT INTO user '
-                . ' (name, password, mail, phonenumber) '
-                . ' VALUES (\'' . $_POST['name'] . '\', \'' . $_POST['_password'] . '\',\'' . $_POST['mail'] . '\',\'' . $_POST['phonenumber'] . '\')');
-            try {
-                // Envoyer la requête
-                $q->execute(array());
-            } catch (Doctrine\DBAL\DBALException $e) {
-                // En cas d'erreur, afficher les informations dans le browser
-                // et terminer (Beurk ! Pour debug uniquement)
-                print_r($e->errorInfo());
-                print_r($e->errorCode());
-                return;
-            }
-        }
-    }
-
-    public function forgotPassword()//Fonction
-    {
-//Processus récupération mot de passe : l'admin entre sont nom et addresse mail, puis recoit un lien sur son addresse mail pour changer son mot de passe
-//vérification de l'existence de l'email dans la base de donée
-        // requete pour demander si l'addresse mail entrer existe deja en BDD
+        //Récuperation des email existant en BDD
         $sql = 'SELECT mail '
             . 'FROM user '
             . 'WHERE mail = ?';
-        $row = $this->getDb()->fetchAssoc($sql, array($request)); // resultat obtenu par la requete ici sous forme de tableau
+        $row = $this->getDb()->fetchAssoc($sql, array($email));
 
-        if ($row == true) { // Si le resultat demander est true donc l'addresse email existe en BDD on affiche un message erreur
-            echo "Cet addresse email existe deja";
-        } else { // Sinon si resultat est false l'email saisie n'existe pas en BDD on execute l'insertion
-            // Préparer la requête
-            $q = $app['db']->prepare('INSERT INTO user VALUES (\'' . $_POST['name'] . '\', \'' . $_POST['password'] . '\',\'' . $_POST['mail'] . '\',\'' . $_POST['phonenumber'] . '\')');
-            try {
-                // Envoyer la requête
-                $q->execute(array());
-            } catch (Doctrine\DBAL\DBALException $e) {
-                // En cas d'erreur, afficher les informations dans le browser
-                // et terminer (Beurk ! Pour debug uniquement)
-                print_r($e->errorInfo());
-                print_r($e->errorCode());
-                return;
+        //Condition pour verifier que l'email n'existe pas en base de donnée
+        if ($row['mail'] !== $email) {
+
+            // fonction strlen() compte le nombre de caracteres et trim() pour supprimer les espaces
+            //stripslashes() pour supprimer les antislash, strip_tags() permet de supprimer tous code html se qui securisent les données
+            // CONDITIONS NOM
+            if ((isset($nom)) && (strlen(trim($nom)) > 0)) {
+                $nom = stripslashes(strip_tags($nom));
             }
+
+            // CONDITIONS telephone
+            if ((isset($telephone)) && (strlen(trim($telephone)) > 10)) {
+                $telephone = stripslashes(strip_tags($telephone));
+            }
+
+            // CONDITIONS EMAIL
+            if ((isset($email) && strlen(trim($email)) > 0) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $email = stripslashes(strip_tags($email));
+            }
+
+            // CONDITIONS password
+            if ((isset($password)) && (strlen(trim($password)) > 0)) {
+                $password = stripslashes(strip_tags($password));
+            }
+            //Encodage du mot de passe
+            // Initialisation du Salt
+            
+
+            //Préparer la requête
+            $ql = $app['db']->prepare("INSERT INTO user (name, password, mail, phonenumber) VALUES ('$nom', '$password', '$email', '$telephone')");
+            // Envoyer la requête
+            $ql->execute();
+
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
+    public function forgotPassword(Request $request, Application $app)
+    {
+        //Initialisation des variables 
+
+        $email = $request->get("email");
+
+        //Récuperation des email existant en BDD
+        $sql = 'SELECT mail '
+            . 'FROM user '
+            . 'WHERE mail = ?';
+        $row = $this->getDb()->fetchAssoc($sql, array($email));
+
+        //Condition pour verifier que l'email n'existe pas en base de donnée
+        if ($row['mail'] == $email) {
+
+            // CONDITIONS EMAIL
+            if ((isset($email) && strlen(trim($email)) > 0) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $email = stripslashes(strip_tags($email));
+            }
+
+            // fonction php pour envoie d'un email avec lien de modification du mot de passe
+
+            return "1";
+        } else {
+            return "0";
+        }
+    }
+
+    public function resetPassword(Request $request, Application $app)
+    {
+        //Initialisation des variables 
+
+        $email    = $request->get("email");
+        $password = $request->get('_password');
+
+        //Récuperation des email existant en BDD
+        $sql = 'SELECT mail '
+            . 'FROM user '
+            . 'WHERE mail = ?';
+        $row = $this->getDb()->fetchAssoc($sql, array($email));
+
+        //Condition pour verifier que l'email n'existe pas en base de donnée
+        if ($row['mail'] == $email) {
+
+            // CONDITIONS EMAIL
+            if ((isset($email) && strlen(trim($email)) > 0) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $email = stripslashes(strip_tags($email));
+            }
+            // CONDITIONS password
+            if ((isset($password)) && (strlen(trim($password)) > 0)) {
+                $password = stripslashes(strip_tags($password));
+            }
+
+            //Préparer la requête
+            $ql = $app['db']->prepare("UPDATE INTO user (password) VALUES ('$password') WHERE mail ='$email'");
+            // Envoyer la requête
+            $ql->execute();
+
+
+            return "1";
+        } else {
+            return "0";
         }
     }
 }

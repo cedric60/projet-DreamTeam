@@ -1,8 +1,8 @@
 <?php
 
 // Home page
-$app->get('/',"App\Controller\IndexController::indexAction")
-        ->bind('index');//Route vers la page d'accueil
+$app->get('/',"App\Controller\IndexController::indexAction")//Route vers la page d'accueil
+        ->bind('index');
 
 $app->get('/form',"App\Controller\FormController::formAction")
         ->bind('form');
@@ -15,25 +15,29 @@ $app->get('/formContact',"App\Controller\FormController::formContactAction")
  ////////////////////USER CONTROLLER ////////////////////////////
 
 // Login page
-$app->get('/login',"App\Controller\UserController::LoginAction")
-        ->bind('Login');//Route vers la page de connexion
+$app->get('/login',"App\Controller\UserController::LoginAction")//Route vers la page de connexion
+        ->bind('Login');
 
 // Register page
-$app->get('/register',"App\Controller\UserController::RegisterAction")
-        ->bind('register');//Route vers la page d'enregistrement d'un nouvelle administrateur 
+$app->get('/register',"App\Controller\UserController::RegisterAction")//Route vers la page d'enregistrement d'un nouvelle administrateur
+        ->bind('register'); 
 
-$app->post('/saveregister',"App\Controller\UserController::SaveregisterAction")
-        ->bind('saveregister');//Route vers la fonction de verification du formulaire
-
-        
+$app->get('/saveregister',"App\Controller\UserController::saveRegisterAction")//Route vers la fonction de verification du formulaire
+        ->bind('saveregister');
+    
 // Forgot password
-$app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")
+$app->get('/forgot_password',"App\Controller\UserController::ForgotPasswordAction")//Route vers la page d'oubli de mot de passe
         ->bind('forgot_password');
 
+$app->get('/forgotpasswordvalid',"App\Controller\UserController::forgotPasswordValidAction")//Route vers la fonction page d'oubli de mot de passe
+        ->bind('forgotpasswordvalid');
 
 // Reset password
-$app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction")
-        ->bind('reset_password');//Route vers la page de reinitialisation du mot de passe
+$app->get('/reset_password',"App\Controller\UserController::ResetPasswordAction")//Route vers la page de reinitialisation du mot de passe
+        ->bind('reset_password');
+
+$app->get('/resetpasswordvalid',"App\Controller\UserController::resetPasswordValidAction")//Route vers la page de reinitialisation du mot de passe
+        ->bind('resetpasswordvalid');
 
 
 ////////////////////// CHART CONTROLLER////////////////////////////////

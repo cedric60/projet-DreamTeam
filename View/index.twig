@@ -4,9 +4,16 @@
 
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div class="container">
-            Je suis logger
+            Bienvenue
         </div>
     {% else %}
+
+        <div class="container">
+           <a class="nav-link" href="{{ path('Login') }}">
+            <i class="fa fa-fw fa-link"></i>
+                        <span class="nav-link-text">Connexion</span>
+        </a>
+
         <div class="container" style="padding-top:12%";>
             <div class="d-none d-md-block d-lg-block d-xl-block"> <!--version desktop-->
                 <p style="font-weight: bold; font-size:xx-large;margin-left:11%;"> Bienvenue sur l'interface administrateur d' </p>
@@ -19,6 +26,7 @@
     
 
             </div>
+
         </div>
     {% endif %}
 {% endblock %}
