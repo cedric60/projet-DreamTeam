@@ -5,15 +5,19 @@ namespace App\DAO;
 class LearnerDAO extends DAO {
 
     public function find($id) {
-        $sql = 'SELECT learner.lastname, learner.firstname, learner.mail, learner.phonenumber FROM learner '
-                . 'WHERE learner_id = ' . $id;
-        $stmt = $this->getDb()->fetchAll($sql);
+        $sql = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
+                FROM learner
+                LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
+                LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
+                LEFT JOIN formation ON session.formation_idformation = formation.idformation
+                WHERE learner.idlearner = ?';
+        $stmt = $this->getDb()->fetchAssoc($sql, array($id));
 
         return $stmt;
     }
 
     public function findAll() {
-        $sql = ' SELECT learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date 
+        $sql = ' SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date, formation.idformation 
         FROM learner
         LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
         LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
@@ -45,7 +49,25 @@ class LearnerDAO extends DAO {
         
         return $stmt;
     }
-    
+    public function findFormationById($id, $fid) {
+        $sql = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
+                FROM learner
+                LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
+                LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
+                LEFT JOIN formation ON session.formation_idformation = formation.idformation
+                WHERE learner.idlearner = ?
+                AND formation.idformation = ?';
+        $stmt = $this->getDb()->fetchAssoc($sql, array($id, $fid));
+
+        return $stmt;
+    }
+    public function findLastId() {
+        $sql = 'SELECT MAX( idlearner ) FROM learner';
+        $stmt = $this->getDb()->fetchAssoc($sql, array());
+
+        return $stmt;
+    }
+
 
     function buildDomainObject(array $row){
 

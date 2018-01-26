@@ -7,11 +7,26 @@
             Bienvenue
         </div>
     {% else %}
+
         <div class="container">
            <a class="nav-link" href="{{ path('Login') }}">
             <i class="fa fa-fw fa-link"></i>
                         <span class="nav-link-text">Connexion</span>
         </a>
+
+        <div class="container" style="padding-top:12%";>
+            <div class="d-none d-md-block d-lg-block d-xl-block"> <!--version desktop-->
+                <p style="font-weight: bold; font-size:xx-large;margin-left:11%;"> Bienvenue sur l'interface administrateur d' </p>
+                <img src="img/logo.png" alt="logo_IDC" class="img-fluid" style="margin-left: 20%";>
+            </div>
+            <div class="d-block d-xs-none d-none d-sm-block d-md-none"> <!--version mobile-->
+                <p style="font-weight: bold; font-size:x-large; text-align: center; margin-top: 39%; margin-left: 8%; margin-bottom: 3%;"> Bienvenue sur l'interface administrateur d' </p>
+                <img src="img/logo.png" alt="logo_IDC" class="img-fluid">
+                
+    
+
+            </div>
+
         </div>
     {% endif %}
 {% endblock %}

@@ -12,8 +12,6 @@ $app->get('/formContact',"App\Controller\FormController::formContactAction")
 
 
 
-
-
  ////////////////////USER CONTROLLER ////////////////////////////
 
 // Login page
@@ -66,18 +64,36 @@ $app->get('/formation',"App\Controller\FormationController::FormationAction")
         ->bind('formation');
 $app->get('/addformation',"App\Controller\FormationController::AddFormationAction")
         ->bind('addformation');
-$app->get('/listeFormation',"App\Controller\ListeController::ListeFormationAction")
-        ->bind('listeFormation');
+$app->post('/saveformation',"App\Controller\FormationController::SaveFormationAction")
+        ->bind('saveformation');
+$app->get('/sessionactive/{id}',"App\Controller\FormationController::sessionActiveAction")
+        ->bind('sessionactive');
 
 
 
-// Learner page
+// Learners page
 $app->get('/learners',"App\Controller\LearnerController::LearnerAction")
         ->bind('learners');
-$app->get('/addlearners',"App\Controller\LearnerController::AddLearnerAction")
+
+$app->get('/addlearners',"App\Controller\LearnerController::addLearnerAction")
         ->bind('addlearners');
+$app->post('/savelearners',"App\Controller\LearnerController::addNewLearnerAction")
+        ->bind('savelearners');
+
+$app->get('/modiflearners/{id}',"App\Controller\LearnerController::modifLearnerAction")
+        ->bind('modiflearners');
+$app->post('/savemodiflearners/{id}',"App\Controller\LearnerController::saveModifLearnerAction")
+        ->bind('savemodiflearners');
+
+
 // data pour recuperer les sessions d'une formation
-$app->get('/datasessionstart',"App\Controller\LearnerController::dataSessionStartAction")
-        ->bind('dataSessionStart');
-$app->get('/datasessionend/{id}',"App\Controller\LearnerController::dataSessionEndAction")
-        ->bind('dataSessionEnd');
+$app->get('/datasessions/{id}',"App\Controller\LearnerController::dataSessionsAction")
+        ->bind('dataSessions');
+
+
+// Form validation
+$app->post('/form_validation',"App\Controller\FormValidationController::formValidationAction")
+        ->bind('form_validation');
+
+$app->post('/SaveFormAction',"App\Controller\FormValidationController::SaveFormAction")
+        ->bind('SaveFormAction'); //Route vers la fonction de verification du formulaire à faire et modifier regarder userdao

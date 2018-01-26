@@ -1,35 +1,14 @@
-$('select#formation').on('change', function() {
-    $.ajax({
-        type: 'GET',
-        url: '/datasessions/' + $('select#formation option:selected').val(),
-        dataType: "text",
-        async: true,
-        success: function(data) {
-            $("select#session").html(data);
-        },
-        error: function(request, error) {
-            console.log(arguments);
-            alert(" Can't do because: " + error);
-        }
-    });
-
-})
-
 $('#button').on('click', function(e) {
 
     e.preventDefault();
 
     var re = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/,
+        id = parseInt($('#learnerId').val()),
         lastname = $('#lastname').val(),
         firstname = $('#firstname').val(),
         mail = $('#mail').val(),
-        phonenumber = $('#phonenumber').val(),
-        formationId = $('#formation').val(),
-        sessionId = $('#session').val();
+        phonenumber = $('#phonenumber').val();
 
-    console.log(formationId);
-
-    console.log(sessionId);
     $error = false;
 
     if (lastname.length == 0 || lastname.length > 45) {
@@ -90,7 +69,7 @@ $('#button').on('click', function(e) {
         });
     }
 
-    if (phonenumber.length == 0 && isNaN(phonenumber) || phonenumber.length > 10) {
+    if (isNaN(phonenumber) || phonenumber.length > 10) {
         document.getElementById('erreurphone').innerHTML = 'valeur incorrecte';
         $('#phonenumber').css({
             borderColor: 'red',
@@ -104,36 +83,8 @@ $('#button').on('click', function(e) {
             color: '#4976b9'
         });
     }
-    if (formationId == 0) {
-        document.getElementById('erreurformation').innerHTML = 'valeur incorrecte';
-        $('#formation').css({
-            borderColor: 'red',
-            color: 'red'
-        });
-        $error = true;
-    } else {
-        document.getElementById('erreurformation').innerHTML = '';
-        $('#formation').css({
-            borderColor: '#ced4da',
-            color: '#4976b9'
-        });
-    }
-    if (sessionId == 0) {
-        document.getElementById('erreursession').innerHTML = 'valeur incorrecte';
-        $('#session').css({
-            borderColor: 'red',
-            color: 'red'
-        });
-        $error = true;
-    } else {
-        document.getElementById('erreursession').innerHTML = '';
-        $('#session').css({
-            borderColor: '#ced4da',
-            color: '#4976b9'
-        });
-    }
 
     if ($error == false) {
-        $('#saveLearnerForm').submit();
+        $('#modifLearnerForm').submit();
     }
 });
