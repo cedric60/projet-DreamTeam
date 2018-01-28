@@ -1,48 +1,48 @@
 {% extends "layout.twig" %}
 
 {% block body %} 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                <select>
-                    <option>Selectionnez une formation</option>
-                </select>
-                <div class="row">
-                    <label>Entre le :</label>
-                    <input type="date">
-                    <label>et le :</label>
-                    <input type="date">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <select>
+                        <option>Selectionnez une formation</option>
+                    </select>
+                    <div class="row">
+                        <label>Entre le :</label>
+                        <input type="date">
+                        <label>et le :</label>
+                        <input type="date">
+                    </div>
+                </form>
+                <div  id='draw_chart'>
                 </div>
-            </form>
-            <div  id='draw_chart'>
             </div>
-        </div>
 
-        <div class="col-md-6">
-            <form>
-                <select>
-                    <option>Selectionnez une formation</option>
-                </select>
-                <div class="row">
-                    <label>Entre le :</label>
-                    <input type="date">
-                    <label>et le :</label>
-                    <input type="date">
-                </div>
-            </form>
-            <div id='column_chart'></div>
-        </div>
-    </div> 
-</div>
+            <div class="col-md-6">
+                <form>
+                    <select>
+                        <option>Selectionnez une formation</option>
+                    </select>
+                    <div class="row">
+                        <label>Entre le :</label>
+                        <input type="date">
+                        <label>et le :</label>
+                        <input type="date">
+                    </div>
+                </form>
+                <div id='column_chart'></div>
+            </div>
+        </div> 
+    </div>
 
 {% endblock %}
 
 {% block js %}
 
-{{ parent() }}
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="/js/drawchart.js"></script>
-<script type="text/javascript" src="/js/columnchart.js"></script>
+    {{ parent() }}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="/js/drawchart.js"></script>
+    <script type="text/javascript" src="/js/columnchart.js"></script>
 {% endblock %}
 

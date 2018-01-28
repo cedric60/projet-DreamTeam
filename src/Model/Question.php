@@ -11,26 +11,29 @@
  *
  * @author Cédric
  */
-class Question {
-    
+class Question
+{
+
     private $name;
     private $description;
-    
-    function getName() {
+
+    function getName()
+    {
         return $this->name;
     }
 
-    function getDescription() {
+    function getDescription()
+    {
         return $this->description;
     }
 
-    function setName($name) {
+    function setName($name)
+    {
         $this->name = $name;
     }
 
-    function setDescription($description) {
+    function setDescription($description)
+    {
         $this->description = $description;
     }
-
-
 }

@@ -21,7 +21,7 @@ body {
   overflow-x: hidden; 
   background-image: url("/img/logoIDC1.png");
   background-color: black;
-  
+  background-repeat: no-repeat;
 }
 
 body.sticky-footer {

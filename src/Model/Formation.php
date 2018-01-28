@@ -11,17 +11,18 @@
  *
  * @author Cédric
  */
-class Formation {
-   
+class Formation
+{
+
     private $name;
-    
-    function getName() {
+
+    function getName()
+    {
         return $this->name;
     }
 
-    function setName($name) {
+    function setName($name)
+    {
         $this->name = $name;
     }
-
-
 }

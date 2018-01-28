@@ -11,35 +11,40 @@
  *
  * @author Cédric
  */
-class Answer {
-    
+class Answer
+{
+
     private $name;
     private $description;
     private $smiley;
-    
-    function getName() {
+
+    function getName()
+    {
         return $this->name;
     }
 
-    function getDescription() {
+    function getDescription()
+    {
         return $this->description;
     }
 
-    function getSmiley() {
+    function getSmiley()
+    {
         return $this->smiley;
     }
 
-    function setName($name) {
+    function setName($name)
+    {
         $this->name = $name;
     }
 
-    function setDescription($description) {
+    function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    function setSmiley($smiley) {
+    function setSmiley($smiley)
+    {
         $this->smiley = $smiley;
     }
-
-
 }

@@ -40,7 +40,7 @@ $(function () {
                 method: "GET",
                 data: $("form").serialize(),
                 success: function (data) { // Je récupère la réponse du fichier PHP
-                    alert(data);
+                    
                     if (data == 1) {
                         $("#msg_confirme").html(messageconfirme);
                     } else {

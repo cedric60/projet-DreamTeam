@@ -15,12 +15,20 @@
             $learnersList = $app['dao.learner']->findAll();
             return $app['twig']->render('learner.twig', array('learnersList' => $learnersList));
         }
-
+/**
+ * 
+ * @param Application $app
+ * @return array
+ */
         public function addLearnerAction(Application $app){
             $formationList = $app['dao.formation']->findAll();
             return $app['twig']->render('addlearners.twig', array('formationList' => $formationList));
         }
-
+/**
+ * 
+ * @param Application $app
+ * @return type array
+ */
         public function addNewLearnerAction(Application $app){
             $lastname = $_POST['lastname'];
             $firstname =  $_POST['firstname']; 
@@ -76,11 +84,22 @@
             
 
         }
-
+/**
+ * 
+ * @param type $id
+ * @param Application $app
+ * @return array
+ */
         public function modifLearnerAction($id, Application $app){
             $learnersList = $app['dao.learner']->find($id);
             return $app['twig']->render('modiflearner.twig', array('learnersList' => $learnersList,));
         }
+        /**
+         * 
+         * @param type $id
+         * @param Application $app
+         * @return array
+         */
         public function saveModifLearnerAction($id, Application $app){
             $id = (int)($_POST['learnerId']);
             $lastname = $_POST['lastname'];
@@ -122,7 +141,12 @@
             
 
         }
-
+/**
+ * 
+ * @param type $id
+ * @param Application $app
+ * @return string
+ */
         public function dataSessionsAction($id, Application $app){
             
             $res = $app['dao.formation']->findSessions($id);

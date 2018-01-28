@@ -2,10 +2,17 @@
 
 namespace App\DAO;
 
-class LearnerDAO extends DAO {
+class LearnerDAO extends DAO
+{
 
-    public function find($id) {
-        $sql = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
+    /**
+     * 
+     * @param type $id
+     * @return array
+     */
+    public function find($id)
+    {
+        $sql  = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
                 FROM learner
                 LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
                 LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
@@ -16,8 +23,13 @@ class LearnerDAO extends DAO {
         return $stmt;
     }
 
-    public function findAll() {
-        $sql = ' SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date, formation.idformation 
+    /**
+     * 
+     * @return string
+     */
+    public function findAll()
+    {
+        $sql  = ' SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date, formation.idformation 
         FROM learner
         LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
         LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
@@ -26,31 +38,51 @@ class LearnerDAO extends DAO {
 
         return $stmt;
     }
-    public function LearnerList($id) {
-        $sql = "    SELECT learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date 
+
+    /**
+     * 
+     * @param type $id
+     * @return string
+     */
+    public function LearnerList($id)
+    {
+        $sql  = "    SELECT learner.lastname, learner.firstname, learner.mail, formation.name, session.start_date, session.end_date 
                     FROM learner
                     LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
                     LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
                     LEFT JOIN formation ON session.formation_idformation = formation.idformation
                     WHERE learner.idlearner = $id";
         $stmt = $this->getDb()->fetchAll($sql);
-        
+
         return $stmt;
     }
 
-    public function LearnerListConcat() {
-        $sql = "SELECT learner.lastname, learner.firstname, learner.mail, GROUP_CONCAT(DISTINCT formation.name) 
+    /**
+     * 
+     * @return string
+     */
+    public function LearnerListConcat()
+    {
+        $sql  = "SELECT learner.lastname, learner.firstname, learner.mail, GROUP_CONCAT(DISTINCT formation.name) 
         FROM learner
         LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
         LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
         LEFT JOIN formation ON session.formation_idformation = formation.idformation
         GROUP BY learner.lastname, learner.firstname, learner.mail";
         $stmt = $this->getDb()->fetchAll($sql);
-        
+
         return $stmt;
     }
-    public function findFormationById($id, $fid) {
-        $sql = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
+
+    /**
+     * 
+     * @param type $id
+     * @param type $fid
+     * @return array
+     */
+    public function findFormationById($id, $fid)
+    {
+        $sql  = 'SELECT learner.idlearner, learner.lastname, learner.firstname, learner.mail, learner.phonenumber, formation.name, session.start_date, session.end_date, formation.idformation            
                 FROM learner
                 LEFT JOIN session_has_learner ON learner.idlearner = session_has_learner.learner_idlearner
                 LEFT JOIN session ON session_has_learner.session_idsession = session.idsession
@@ -61,18 +93,25 @@ class LearnerDAO extends DAO {
 
         return $stmt;
     }
-    public function findLastId() {
-        $sql = 'SELECT MAX( idlearner ) FROM learner';
+
+    /**
+     * 
+     * @return array
+     */
+    public function findLastId()
+    {
+        $sql  = 'SELECT MAX( idlearner ) FROM learner';
         $stmt = $this->getDb()->fetchAssoc($sql, array());
 
         return $stmt;
     }
 
-
-    function buildDomainObject(array $row){
-
+    /**
+     * 
+     * @param array $row
+     */
+    function buildDomainObject(array $row)
+    {
+        
     }
 }
-
-
-

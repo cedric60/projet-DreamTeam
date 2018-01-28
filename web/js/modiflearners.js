@@ -1,13 +1,13 @@
-$('#button').on('click', function(e) {
+$('#button').on('click', function (e) {
 
     e.preventDefault();
 
     var re = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/,
-        id = parseInt($('#learnerId').val()),
-        lastname = $('#lastname').val(),
-        firstname = $('#firstname').val(),
-        mail = $('#mail').val(),
-        phonenumber = $('#phonenumber').val();
+            id = parseInt($('#learnerId').val()),
+            lastname = $('#lastname').val(),
+            firstname = $('#firstname').val(),
+            mail = $('#mail').val(),
+            phonenumber = $('#phonenumber').val();
 
     $error = false;
 

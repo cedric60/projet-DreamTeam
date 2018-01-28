@@ -11,42 +11,51 @@
  *
  * @author Cédric
  */
-class Learner {
-    
+class Learner
+{
+
     private $lastname;
     private $firstname;
     private $mail;
     private $phoneNumber;
-    
-    function getLastname() {
+
+    function getLastname()
+    {
         return $this->lastname;
     }
 
-    function getFirstname() {
+    function getFirstname()
+    {
         return $this->firstname;
     }
 
-    function getMail() {
+    function getMail()
+    {
         return $this->mail;
     }
 
-    function getPhoneNumber() {
+    function getPhoneNumber()
+    {
         return $this->phoneNumber;
     }
 
-    function setLastname($lastname) {
+    function setLastname($lastname)
+    {
         $this->lastname = $lastname;
     }
 
-    function setFirstname($firstname) {
+    function setFirstname($firstname)
+    {
         $this->firstname = $firstname;
     }
 
-    function setMail($mail) {
+    function setMail($mail)
+    {
         $this->mail = $mail;
     }
 
-    function setPhoneNumber($phoneNumber) {
+    function setPhoneNumber($phoneNumber)
+    {
         $this->phoneNumber = $phoneNumber;
     }
 }

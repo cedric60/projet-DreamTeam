@@ -1,13 +1,13 @@
-$('select#formation').on('change', function() {
+$('select#formation').on('change', function () {
     $.ajax({
         type: 'GET',
         url: '/datasessions/' + $('select#formation option:selected').val(),
         dataType: "text",
         async: true,
-        success: function(data) {
+        success: function (data) {
             $("select#session").html(data);
         },
-        error: function(request, error) {
+        error: function (request, error) {
             console.log(arguments);
             alert(" Can't do because: " + error);
         }
@@ -15,17 +15,17 @@ $('select#formation').on('change', function() {
 
 })
 
-$('#button').on('click', function(e) {
+$('#button').on('click', function (e) {
 
     e.preventDefault();
 
     var re = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/,
-        lastname = $('#lastname').val(),
-        firstname = $('#firstname').val(),
-        mail = $('#mail').val(),
-        phonenumber = $('#phonenumber').val(),
-        formationId = $('#formation').val(),
-        sessionId = $('#session').val();
+            lastname = $('#lastname').val(),
+            firstname = $('#firstname').val(),
+            mail = $('#mail').val(),
+            phonenumber = $('#phonenumber').val(),
+            formationId = $('#formation').val(),
+            sessionId = $('#session').val();
 
     console.log(formationId);
 

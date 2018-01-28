@@ -2,10 +2,16 @@
 
 namespace App\DAO;
 
-class GivenAnswerDAO extends DAO {
+class GivenAnswerDAO extends DAO
+{
 
-    function findNumberSmiley(){
-        $sql = 'SELECT smiley.name, COUNT(given_answer.chosen_smiley) as count
+    /**
+     * 
+     * @return type
+     */
+    function findNumberSmiley()
+    {
+        $sql  = 'SELECT smiley.name, COUNT(given_answer.chosen_smiley) as count
                 FROM `given_answer`
                 LEFT JOIN smiley 
                 ON given_answer.chosen_smiley = smiley.idsmiley
@@ -15,7 +21,8 @@ class GivenAnswerDAO extends DAO {
         return $stmt;
     }
 
-    function buildDomainObject(array $row){
-
+    function buildDomainObject(array $row)
+    {
+        
     }
 }
