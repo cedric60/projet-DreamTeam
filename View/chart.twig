@@ -2,18 +2,24 @@
 
 {% block body %} 
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:5%; margin-left:1%; ">
             <div class="col-md-6">
                 <form>
-                    <select>
-                        <option>Selectionnez une formation</option>
+                    <select name="formation" id="formation" style="margin-left: 9%;
+    width: 77%;">
+                        <option selected="selected" value="all">Toutes les formations</option>                    
+                    {% for formation in formationList %}
+                        <option value="{{ formation.idformation }}">{{ formation.name }}</option>
+                    {% endfor %}
                     </select>
+                    <br />
                     <div class="row">
-                        <label>Entre le :</label>
-                        <input type="date">
-                        <label>et le :</label>
-                        <input type="date">
+                        <label> Entre le : </label>
+                        <input type="date" name="start-date" id="start-date">
+                        <label> et le : </label>
+                        <input type="date" name="end-date" id="end-date">
                     </div>
+                    <button type "submit" name="button" id="button" >voir</button>
                 </form>
                 <div  id='draw_chart'>
                 </div>
@@ -21,20 +27,64 @@
 
             <div class="col-md-6">
                 <form>
-                    <select>
-                        <option>Selectionnez une formation</option>
+                    <select name="formation2" id="formation2" style="margin-left: 9%;
+    width: 77%;">
+                        <option selected="selected" value="all">Toutes les formations</option>                    
+                    {% for formation in formationList %}
+                        <option value="{{ formation.idformation }}">{{ formation.name }}</option>
+                    {% endfor %}
                     </select>
                     <div class="row">
+                    <br />
                         <label>Entre le :</label>
-                        <input type="date">
+                        <input type="date" name="start-date2" id="start-date2">
                         <label>et le :</label>
-                        <input type="date">
+                        <input type="date" name="end-date2" id="end-date2">
                     </div>
+                    <button type "submit" name="button2" id="button2" >voir</button>
                 </form>
                 <div id='column_chart'></div>
+                <div id='column_chart2'></div>
             </div>
         </div> 
     </div>
+    <p>
+    <button  type "submit" name="comments" id="comments">Voir les commentaires </button>
+    </p>
+    <div class="card-body" id="commentsDiv">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID Formation</th>
+                            <th>Formation</th>
+                            <th>Réponse données</th>
+                            <th>Pourquoi</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID Formation</th>
+                            <th>Formation</th>
+                            <th>Réponse données</th>
+                            <th>Pourquoi</th>
+                            <th>Date</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for comment in commentsList %}
+                            <tr>
+                                <td>{{ comment.idformation }}</td>
+                                <td>{{ comment.formationname }}</td>
+                                <td>{{ comment.name }}</td>
+                                <td>{{ comment.why }}</td>
+                                <td>{{ comment.date|date('d/m/Y') }}</td>
+                            </tr> 
+                        {% endfor %}  
+                    </tbody>
+                </table>
+            </div>
 
 {% endblock %}
 
@@ -44,5 +94,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="/js/drawchart.js"></script>
     <script type="text/javascript" src="/js/columnchart.js"></script>
+    <script type="text/javascript" src="/js/comments.js"></script>
+
 {% endblock %}
 

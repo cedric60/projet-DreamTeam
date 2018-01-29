@@ -39,31 +39,24 @@
             $error = false;
 
             if(strlen($lastname) == 0 || strlen($lastname) > 45){
-                echo 'veuillez renseigner le nom';
                 $error = true;
             }
             if(strlen($firstname) == 0 || strlen($firstname) > 45){
-                echo 'veuillez renseigner le prenom';
                 $error = true;
             }
             if(strlen($mail) == 0 || strlen($mail) > 45){
-                echo 'veuillez renseigner le mail';
                 $error = true;
             }
             if(filter_var($mail, FILTER_VALIDATE_EMAIL) == false) { //Validation d'une adresse de messagerie.
-                echo 'La variable est une adresse de messagerie invalide !';
                 $error = true;
             }
             if(strlen($phonenumber) != 0 && !is_numeric($phonenumber) || strlen($phonenumber) > 10){
-                echo 'veuillez renseigner le tel';
                 $error = true;
             }
             if($formationId == 0 ){
-                echo 'veuillez selectionner une formation';
                 $error = true;
             }
             if($sessionId == 0){
-                echo 'veuillez selectionner une session';
                 $error = true;
             }
 
@@ -109,23 +102,18 @@
             $error = false;
 
             if(strlen($lastname) == 0 || strlen($lastname) > 45){
-                echo 'veuillez renseigner le nom';
                 $error = true;
             }
             if(strlen($firstname) == 0 || strlen($firstname) > 45){
-                echo 'veuillez renseigner le prenom';
                 $error = true;
             }
             if(strlen($mail) == 0 || strlen($mail) > 45){
-                echo 'veuillez renseigner le mail';
                 $error = true;
             }
             if(filter_var($mail, FILTER_VALIDATE_EMAIL) == false) { //Validation d'une adresse de messagerie.
-                echo 'La variable est une adresse de messagerie invalide !';
                 $error = true;
             }
             if(strlen($phonenumber) != 0 && !is_numeric($phonenumber) || strlen($phonenumber) > 10){
-                echo 'veuillez renseigner le tel';
                 $error = true;
             }
 

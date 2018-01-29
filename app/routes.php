@@ -44,16 +44,21 @@ $app->get('/resetpasswordvalid', "App\Controller\UserController::resetPasswordVa
 $app->get('/charts', "App\Controller\ChartController::ChartAction")
     ->bind('charts');
 
-// données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
+// données pour graphique ---- Page non affichée mais utile pour recuperer les donnees pour drawchart
 $app->get('/dataCharts1', "App\Controller\ChartController::DrawChartAction")
     ->bind('dataCharts1');
-// données pour graphique ---- Page non affichée mais utile pour recuperer les donnees
+$app->get('/dataCharts2/{id}/{start}/{end}', "App\Controller\ChartController::DrawChartAction2")
+    ->bind('dataCharts2');
+
+// données pour graphique ---- Page non affichée mais utile pour recuperer les donnees pour column chart
 $app->get('/dataCharts', "App\Controller\ChartController::columnChartAction")
     ->bind('dataCharts');
+$app->get('/dataCharts3/{id}/{start}/{end}', "App\Controller\ChartController::columnChartAction2")
+    ->bind('dataCharts3');
+// données pour tableau des commentaires ---- Page non affichée mais utile pour recuperer les donnees
+$app->get('/dataComments/{id}/{start}/{end}', "App\Controller\ChartController::commentsAction")
+    ->bind('dataComments');
 
-// Charts pages
-$app->get('/charts', "App\Controller\ChartController::ChartAction")
-    ->bind('charts');
 
 
 

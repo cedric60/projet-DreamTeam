@@ -44,23 +44,19 @@ class FormationController
         $end          = $_POST['end_date'];
         $error        = false;
 
-        var_dump($_POST);
+        
         if ($formationId == 0) {
-            echo 'Veuillez selectionner une categorie';
             $error = true;
         }
         if ($formationId == 9999) {
             if ($newformation == "") {
-                echo 'Veuillez selectionner une formation';
                 $error = true;
             }
         }
         if ($start == "") {
-            echo 'Veuillez selectionner une date de debut';
             $error = true;
         }
         if ($end == "") {
-            echo 'Veuillez selectionner une date de fin';
             $error = true;
         }
 
