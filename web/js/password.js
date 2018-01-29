@@ -74,7 +74,7 @@ $(function () {
                         $("#msg_confirme1").html(messageok);
                         cacherFormulaire();
                     } else {
-                        alert("ko");
+                        
                         $("#msg_confirme1").html(messageerreur);
                     }
                 }
