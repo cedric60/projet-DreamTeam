@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserDAO extends DAO implements UserProviderInterface
 { // heritage la class herite de DAO(elle herite de la connexion a la base de donnee  {
@@ -142,9 +143,12 @@ class UserDAO extends DAO implements UserProviderInterface
             }
             //Encodage du mot de passe
             // Initialisation du Salt
-            // 
+            $salt     = md5(time(0, 15));
+            //Utilisation de l'encodage par defaut de silex
+            $password = $app['security.default_encoder']->encodePassword($password, $salt);
+
             //Préparer la requête
-            $ql = $app['db']->prepare("INSERT INTO user (name, password, mail, phonenumber) VALUES ('$nom', '$password', '$email', '$telephone')");
+            $ql = $app['db']->prepare("INSERT INTO user (name, password, mail, phonenumber, salt) VALUES ('$nom', '$password', '$email', '$telephone', '$salt')");
             // Envoyer la requête
             $ql->execute();
 
@@ -199,14 +203,14 @@ class UserDAO extends DAO implements UserProviderInterface
         //Initialisation des variables 
 
         $email    = $request->get("email");
-        $password = $request->get('_password');
+        $password = $request->get("_password");
 
         //Récuperation des email existant en BDD
         $sql = 'SELECT mail '
             . 'FROM user '
             . 'WHERE mail = ?';
         $row = $this->getDb()->fetchAssoc($sql, array($email));
-
+        
         //Condition pour verifier que l'email n'existe pas en base de donnée
         if ($row['mail'] == $email) {
 
@@ -218,14 +222,19 @@ class UserDAO extends DAO implements UserProviderInterface
             if ((isset($password)) && (strlen(trim($password)) > 0)) {
                 $password = stripslashes(strip_tags($password));
             }
+             
+            $salt     = md5(time(0, 15));
+            //Utilisation de l'encodage par defaut de silex
+            $password = $app['security.default_encoder']->encodePassword($password, $salt);
+
+            
 
             //Préparer la requête
-            $ql = 'UPDATE password '
-                . 'FROM user '
-                . 'WHERE mail = $email';
-           
+            $ql = $app['db']->prepare("UPDATE user SET password = '$password' WHERE mail = '$email'");
+            // Envoyer la requête
+            $ql->execute();
 
-
+        
 
             return "1";
         } else {
